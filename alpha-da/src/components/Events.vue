@@ -30,9 +30,11 @@
   </v-row>
 </template>
 <script>
+ 
   export default {
     data: () => ({
       today: '2019-01-10',
+    //   tracked:
       tracked: {
         '2019-01-09': [23, 45, 10],
         '2019-01-08': [10],
@@ -48,4 +50,5 @@
       category: ['Development', 'Meetings', 'Slacking'],
     }),
   }
+  
 </script>
