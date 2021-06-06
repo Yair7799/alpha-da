@@ -41,23 +41,24 @@
           width="150"
          
         />
-    
     </v-app-bar>
 
     <v-main style="background-color:#101a30">
-      
+      <events> </events>
+ 
     </v-main>
   </v-app>
 </template>
 
 <script>
 
+import events from "./components/Events.vue";
 
 export default {
   name: 'App',
 
   components: {
-    
+    events
   },
 
   data: () => ({
