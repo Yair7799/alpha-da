@@ -44,25 +44,25 @@
         />
     
     </v-app-bar>
-
     <v-main style="background-color:#101a30">
-      
+
     </v-main>
   </v-app>
+
 </template>
 
 <script>
-
+import login from './components/login.vue';
 
 export default {
   name: 'App',
 
   components: {
-    
+    login,
   },
 
   data: () => ({
-    //
+
   }),
 };
 </script>

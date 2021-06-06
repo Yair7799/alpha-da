@@ -1,0 +1,38 @@
+<template>
+  <v-form>
+    <v-container>
+      <v-row>
+        <v-col cols="12" sm="6" md="4">
+          <v-text-field v-model="givenUsername" label="שם משתמש" filled rounded dense></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" sm="6" md="4">
+          <v-text-field v-model="givenPassword" label="סיסמא" filled rounded dense></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="text-center">
+          <v-btn @click="login(givenUsername, givenPassword)" rounded color="primary" dark>התחבר</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
+</template>
+
+<script> 
+import userService from 'usrService.js';
+
+export default {
+  name: "login",
+
+  data: () => ({
+    user: {}
+  }),
+  methods: {
+   async login(givenUserName, givenPassword) {
+     this.user = await userService.login(givenUserName, givenPassword)
+    },
+  }
+};
+</script>
