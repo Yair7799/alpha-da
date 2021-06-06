@@ -8,13 +8,7 @@
         sm="5"
         md="6"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-5 .col-md-6
-        </v-card>
+       <intelj> </intelj>
       </v-col>
       <v-col
         sm="5"
@@ -66,9 +60,13 @@
 </template>
 
 <script>
+   import intelj from '../components/intelj.vue' 
+
   export default {
     name: 'MainPage',
-
+    components:{
+        intelj:intelj
+    },
     data: () => ({}
     ),
   }
