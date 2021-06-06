@@ -1,28 +1,70 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="#658cc5"
+      dark
+    >
+      <div class="d-flex align-end">
+        <v-img
+          alt="Logo"
+          class="shrink mr-2"
+          contain
+          src="../images/ny.png"
+          transition="scale-transition"
+          width="50"
+         
+        />
+
+      <h5
+          alt="ny Name"
+          style="color:black"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+         
+          width="80"
+        >
+        NY POLICE DEPARTMENT
+       </h5>
+      </div>
+
+      <v-spacer></v-spacer>
+
+       
+        <v-img
+          alt="brain"
+          class="shrink mr-2"
+          contain
+          src="../images/brain.jpg"
+          transition="scale-transition"
+          width="150"
+         
+        />
+    
+    </v-app-bar>
+
+    <v-main style="background-color:#101a30">
+      
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
-}
+    
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
 </style>
