@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       app
-      color="#64B5F6"
+      color="#658cc5"
       dark
     >
       <div class="d-flex align-end">
@@ -12,7 +12,7 @@
           contain
           src="../images/ny.png"
           transition="scale-transition"
-          width="40"
+          width="50"
          
         />
 
@@ -31,17 +31,20 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+       
+        <v-img
+          alt="brain"
+          class="shrink mr-2"
+          contain
+          src="../images/brain.jpg"
+          transition="scale-transition"
+          width="150"
+         
+        />
+    
     </v-app-bar>
 
-    <v-main>
+    <v-main style="background-color:#101a30">
       
     </v-main>
   </v-app>
@@ -64,7 +67,4 @@ export default {
 </script>
 
 <style scoped>
-.main_aria{
-  background-color:
-}
 </style>
