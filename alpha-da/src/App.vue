@@ -2,27 +2,31 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="#64B5F6"
       dark
     >
-      <div class="d-flex align-center">
+      <div class="d-flex align-end">
         <v-img
-          alt="Vuetify Logo"
+          alt="Logo"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="../images/ny.png"
           transition="scale-transition"
           width="40"
+         
         />
 
-        <v-img
-          alt="Vuetify Name"
+      <h5
+          alt="ny Name"
+          style="color:black"
           class="shrink mt-1 hidden-sm-and-down"
           contain
           min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+         
+          width="80"
+        >
+        NY POLICE DEPARTMENT
+       </h5>
       </div>
 
       <v-spacer></v-spacer>
@@ -38,19 +42,19 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    
   },
 
   data: () => ({
@@ -58,3 +62,9 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.main_aria{
+  background-color:
+}
+</style>
