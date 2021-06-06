@@ -1,42 +1,39 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="400"
+    max-width="450"
+    height="300"
+    outlined
   >
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-    >
-      <v-card-title>Top 10 Australian beaches</v-card-title>
-    </v-img>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          OVERLINE
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          Headline 5
+        </v-list-item-title>
+        <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
+      </v-list-item-content>
 
-    <v-card-subtitle class="pb-0">
-      Number 10
-    </v-card-subtitle>
-
-    <v-card-text class="text--primary">
-      <div>Whitehaven Beach</div>
-
-      <div>Whitsunday Island, Whitsunday Islands</div>
-    </v-card-text>
+      <v-list-item-avatar
+        tile
+        size="80"
+        color="grey"
+      ></v-list-item-avatar>
+    </v-list-item>
 
     <v-card-actions>
       <v-btn
-        color="orange"
+        outlined
+        rounded
         text
       >
-        Share
-      </v-btn>
-
-      <v-btn
-        color="orange"
-        text
-      >
-        Explore
+        Button
       </v-btn>
     </v-card-actions>
   </v-card>
+
 </template>
 
 <script>
