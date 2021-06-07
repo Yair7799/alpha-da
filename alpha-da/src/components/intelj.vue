@@ -39,7 +39,7 @@
 
     <div style="margin-right:5%;  margin-top:2%; margin-left:8%;">
 
-     <v-row style="padding-top:5px;"  v-for="criminal in criminals" :key="criminal.name" >
+     <v-row style="padding-top:5px;"  v-for="criminal in criminals" :key="criminal.firstname" >
         <v-col md="12" style="padding-top:1%">
      <div style="background-color:#070129" >
         <v-row>
@@ -48,11 +48,11 @@
                 style="border-radius:100%; margin-right:20px; margin-top:1%; margin-bottom:1%;"
                  max-height="90"
                  max-width="90"
-                :src="criminal.photo"
+                :src="criminal.imageURL"
            ></v-img>
         <v-col>
-        <p style="color:white; margin-bottom:0%; font-weight:bold" >{{criminal.name}} </p>            
-        <p style="color:#E7E7E7; margin-bottom:2%; font-weight:300; font-size:80%">{{criminal.number}} </p>
+        <p style="color:white; margin-bottom:0%; font-weight:bold" >{{criminal.firstname}} </p>            
+        <p style="color:#E7E7E7; margin-bottom:2%; font-weight:300; font-size:80%">{{criminal.SSN}} </p>
 
         </v-col>
         <v-col style="padding-left:25px">
@@ -81,25 +81,30 @@
 
 <script>
      const axios = require('axios');
+     const {adress} = require('../../prodAdress.json');
   export default {
     name: 'intelj',
 
     data: () => ({
         criminals:[],
+        allCriminals:[],
         isSuscpets: true
     }
     ),
-    created: async () => {
-      this.criminals=  await axios.get(process.env+'/');
+    created: async () => {  
+       this.allCriminals=  await axios.get(adress+'/intelligence/all/suspectsRequested',{headers: {'Access-Control-Allow-Origin': '*'},}); 
+       this.criminals = this.allCriminals.suspects;
     },
     methods: {
         wanteds: async () => {
-            //this.criminals=  await axios.get(process.env+'/');
+            this.criminals=  await axios.get(adress+'/intelligence/all/suspectsRequested');
             this.isSuscpets = false;
+            this.criminals=this.allCriminals.requested;
         },
         suspects: async () => {
-            //this.criminals=  await axios.get(process.env+'/');
+            this.criminals=  await axios.get(adress+'/intelligence/all/suspectsRequested');
             this.isSuscpets = true;
+            this.criminals=this.allCriminals.suspects;
        }
   },
     watch: {

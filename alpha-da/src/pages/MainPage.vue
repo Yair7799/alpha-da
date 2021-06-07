@@ -22,20 +22,22 @@
     </v-row>
     <v-row no-gutters>
       <v-col
+      
         sm="6"
-        md="5"
+        md="6"
         lg="6"
       >
-      <graphes />
+      <graphes class="halfWidth"  />
+      <eventsest></eventsest>
       </v-col>
       <v-col
         sm="6"
-        md="5"
+        md="6"
         offset-md="2"
         lg="6"
         offset-lg="0"
       >
-       <events> </events>
+       <calendar></calendar>
       </v-col>
     </v-row>
   </v-container>
@@ -43,7 +45,8 @@
 
 <script>
    import intelj from '../components/intelj.vue' 
- import envents from '../components/Events.vue' 
+ import CalendarInformation from '../components/CalendarInformation.vue' 
+ import eventsest from '../components/EventsEst.vue' 
  import securityCard from '../components/SecurityCard.vue'
  import graphes from '../components/GraphesCard.vue'
  
@@ -51,7 +54,8 @@
     name: 'MainPage',
     components:{
         intelj:intelj,
-        events:envents,
+        calendar:CalendarInformation,
+        eventsest:eventsest,
         security: securityCard,
         graphes: graphes
     },
@@ -59,3 +63,9 @@
     ),
   }
 </script>
+
+<style scoped>
+.halfWidth {
+
+}
+</style>
