@@ -8,13 +8,7 @@
         sm="5"
         md="6"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-5 .col-md-6
-        </v-card>
+       <intelj> </intelj>
       </v-col>
       <v-col
         sm="5"
@@ -23,13 +17,7 @@
         offset-md="0"
       >
       
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0
-        </v-card>
+        <security></security>
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -38,13 +26,7 @@
         md="5"
         lg="6"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-6 .col-md-5 .col-lg-6
-        </v-card>
+      <graphes />
       </v-col>
       <v-col
         sm="6"
@@ -53,22 +35,26 @@
         lg="6"
         offset-lg="0"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
-        </v-card>
+       <events> </events>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+   import intelj from '../components/intelj.vue' 
+ import envents from '../components/Events.vue' 
+ import securityCard from '../components/SecurityCard.vue'
+ import graphes from '../components/GraphesCard.vue'
+ 
   export default {
     name: 'MainPage',
-
+    components:{
+        intelj:intelj,
+        events:envents,
+        security: securityCard,
+        graphes: graphes
+    },
     data: () => ({}
     ),
   }
