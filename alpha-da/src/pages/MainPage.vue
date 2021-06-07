@@ -27,6 +27,7 @@
         lg="6"
       >
       <graphes />
+      <eventsest></eventsest>
       </v-col>
       <v-col
         sm="6"
@@ -36,7 +37,6 @@
         offset-lg="0"
       >
        <events> </events>
-       <eventsest></eventsest>
       </v-col>
     </v-row>
   </v-container>

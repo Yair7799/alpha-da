@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <template v-if="this.isGraph"> <graph /> </template>
-    <template v-else><pie /></template>
+    <template v-if="this.isGraph"> <pie /> </template>
+    <template v-else><graph /></template>
     <v-btn @click="chageIsGraph">גרף מבוקשים חשודים</v-btn>
   </v-card>
 </template>
