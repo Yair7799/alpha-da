@@ -41,23 +41,21 @@
           width="150"
          
         />
-    
     </v-app-bar>
     <v-main style="background-color:#101a30">
-<login></login>
+      <homepage> </homepage>
     </v-main>
   </v-app>
 
 </template>
-
 <script>
-import login from './views/login.vue';
+
+import homepage from './pages/MainPage.vue' 
 
 export default {
   name: 'App',
-
   components: {
-    login,
+    homepage:homepage
   },
 
   data: () => ({
