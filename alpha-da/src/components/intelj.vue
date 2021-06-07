@@ -4,12 +4,13 @@
     max-width="450"
     height="300"
     outlined
+    style="background-color:#E2DFDB; direction:rtl"
   >
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="text-overline mb-4">
-          OVERLINE
-        </div>
+        <h1>
+          ציר מודיעיני
+        </h1>
         <v-list-item-title class="text-h5 mb-1">
           Headline 5
         </v-list-item-title>
