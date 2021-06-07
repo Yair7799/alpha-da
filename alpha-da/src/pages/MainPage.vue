@@ -50,17 +50,23 @@
        <events> </events>
       </v-col>
     </v-row>
+    <graph />
+    <pie />
   </v-container>
 </template>
 
 <script>
    import intelj from '../components/intelj.vue' 
  import envents from '../components/Events.vue' 
+ import graph from '../components/Graph.vue'
+ import pie from '../components/PieChart.vue'
   export default {
     name: 'MainPage',
     components:{
         intelj:intelj,
-        events:envents
+        events:envents,
+        graph:graph,
+        pie:pie
     },
     data: () => ({}
     ),

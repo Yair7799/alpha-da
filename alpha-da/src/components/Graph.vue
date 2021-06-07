@@ -1,58 +1,93 @@
 <template>
-  <v-card
-    class="mx-auto text-center"
-    color="green"
-    dark
-    max-width="600"
-  >
-    <v-card-text>
-      <v-sheet color="rgba(0, 0, 0, .12)">
-        <v-sparkline
-          :value="value"
-          color="rgba(255, 255, 255, .7)"
-          height="100"
-          padding="24"
-          stroke-linecap="round"
-          smooth
-        >
-          <template v-slot:label="item">
-            ${{ item.value }}
-          </template>
-        </v-sparkline>
-      </v-sheet>
-    </v-card-text>
-
-    <v-card-text>
-      <div class="text-h4 font-weight-thin">
-        Sales Last 24h
-      </div>
-    </v-card-text>
-
-    <v-divider></v-divider>
-
-    <v-card-actions class="justify-center">
-      <v-btn
-        block
-        text
-      >
-        Go to Report
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+  <div id="chart">
+    <apexchart
+      type="line"
+      height="350"
+      :options="chartOptions"
+      :series="series"
+    ></apexchart>
+  </div>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      value: [
-        423,
-        446,
-        675,
-        510,
-        590,
-        610,
-        760,
+import VueApexCharts from "vue-apexcharts";
+
+export default {
+  el: "#app",
+  components: {
+    apexchart: VueApexCharts,
+  },
+  data: function () {
+    return {
+      series: [
+        {
+          name: "High - 2013",
+          data: [28, 29, 33, 36, 32, 32, 33],
+        },
+        {
+          name: "Low - 2013",
+          data: [12, 11, 14, 18, 17, 13, 13],
+        },
       ],
-    }),
-  }
+      chartOptions: {
+        chart: {
+          height: 350,
+          type: "line",
+          dropShadow: {
+            enabled: true,
+            color: "#000",
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2,
+          },
+          toolbar: {
+            show: false,
+          },
+        },
+        colors: ["#77B6EA", "#545454"],
+        dataLabels: {
+          enabled: true,
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        title: {
+          text: "Average High & Low Temperature",
+          align: "left",
+        },
+        grid: {
+          borderColor: "#e7e7e7",
+          row: {
+            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            opacity: 0.5,
+          },
+        },
+        markers: {
+          size: 1,
+        },
+        xaxis: {
+          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          title: {
+            text: "Month",
+          },
+        },
+        yaxis: {
+          title: {
+            text: "Temperature",
+          },
+          min: 5,
+          max: 40,
+        },
+        legend: {
+          position: "top",
+          horizontalAlign: "right",
+          floating: true,
+          offsetY: -25,
+          offsetX: -5,
+        },
+      },
+    };
+  },
+};
 </script>
