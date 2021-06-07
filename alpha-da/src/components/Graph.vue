@@ -91,3 +91,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#chart {
+ background-color:white
+}
+</style>

@@ -32,13 +32,6 @@
         md="5"
         lg="6"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-6 .col-md-5 .col-lg-6
-        </v-card>
       </v-col>
       <v-col
         sm="6"
@@ -50,23 +43,18 @@
        <events> </events>
       </v-col>
     </v-row>
-    <graph />
-    <pie />
   </v-container>
 </template>
 
 <script>
    import intelj from '../components/intelj.vue' 
  import envents from '../components/Events.vue' 
- import graph from '../components/Graph.vue'
- import pie from '../components/PieChart.vue'
+
   export default {
     name: 'MainPage',
     components:{
         intelj:intelj,
-        events:envents,
-        graph:graph,
-        pie:pie
+        events:envents
     },
     data: () => ({}
     ),
