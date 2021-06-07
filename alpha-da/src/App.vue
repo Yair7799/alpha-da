@@ -32,7 +32,6 @@
 
       <v-spacer></v-spacer>
 
-       
         <v-img
           alt="brain"
           class="shrink mr-2"
@@ -45,14 +44,14 @@
     
     </v-app-bar>
     <v-main style="background-color:#101a30">
-
+<login></login>
     </v-main>
   </v-app>
 
 </template>
 
 <script>
-import login from './components/login.vue';
+import login from './views/login.vue';
 
 export default {
   name: 'App',
