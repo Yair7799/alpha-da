@@ -1,7 +1,7 @@
 <template>
-  <v-form>
+  <v-form class="mt-6">
     <v-container>
-      <v-row>
+      <v-row class="justify-center">
         <v-col cols="12" sm="6" md="4">
           <v-text-field
             v-model="givenUsername"
@@ -13,11 +13,12 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="justify-center">
         <v-col cols="12" sm="6" md="4">
           <v-text-field
             v-model="givenPassword"
             label="סיסמא"
+            type="password"
             filled
             rounded
             dense
@@ -48,11 +49,11 @@ export default {
   name: "login",
 
   data() {
-return {
-   user: {},
-givenUserName: "",
-givenPassword: ""
-}
+    return {
+      user: {},
+      givenUserName: "",
+      givenPassword: ""
+    };
   },
   methods: {
     async login(givenUserName, givenPassword) {
