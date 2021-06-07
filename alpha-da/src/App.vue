@@ -62,5 +62,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+#app {
+    font-family: 'Arimo', sans-serif !important;
+}
 </style>

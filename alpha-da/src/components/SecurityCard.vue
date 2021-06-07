@@ -1,7 +1,6 @@
 <template>
 <v-card style="direction:rtl"
     class="mx-auto mainCard"
-    max-width="30%"
     outlined
     color="info"
   >
