@@ -36,6 +36,7 @@
         offset-lg="0"
       >
        <events> </events>
+       <eventsest></eventsest>
       </v-col>
     </v-row>
   </v-container>
@@ -44,6 +45,7 @@
 <script>
    import intelj from '../components/intelj.vue' 
  import envents from '../components/Events.vue' 
+ import eventsest from '../components/EventsEst.vue' 
  import securityCard from '../components/SecurityCard.vue'
  import graphes from '../components/GraphesCard.vue'
  
@@ -52,6 +54,7 @@
     components:{
         intelj:intelj,
         events:envents,
+        eventsest:eventsest,
         security: securityCard,
         graphes: graphes
     },
