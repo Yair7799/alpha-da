@@ -1,5 +1,5 @@
 import alertify from "alertify.js";
-
+const serverApi = 'http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz';
 export default {
   login,
   logout
@@ -15,7 +15,7 @@ function login(givenUserName, givenPassword) {
     method: "GET"
   };
   return fetch(
-    `http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz:8080/users/login?username=${givenUserName}&password=${givenPassword}`,
+    `${serverApi}/users/login?username=${givenUserName}&password=${givenPassword}`,
     requestOptions
   ).then(handleResponse);
 }
@@ -37,6 +37,7 @@ function handleResponse(response) {
     localStorage.setItem("user", JSON.stringify(data));
     console.log("success");
     alertify.success("התחברנו בהצלחה");
+    //this.$router.push({ name: 'home' })
     return data;
   });
 }

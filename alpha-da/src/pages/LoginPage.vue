@@ -46,7 +46,7 @@
 import userService from "../userService";
 
 export default {
-  name: "login",
+  name: "LoginPage",
 
   data() {
     return {
@@ -56,7 +56,7 @@ export default {
     };
   },
   methods: {
-    async login(givenUserName, givenPassword) {
+    async login(givenUserName, givenPassword) { 
       this.user = await userService.login(givenUserName, givenPassword);
     }
   }
