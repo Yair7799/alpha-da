@@ -2,9 +2,10 @@
   <div id="chart">
     <apexchart
       type="line"
-      height="350"
+      height=350vh
       :options="chartOptions"
       :series="series"
+      width=100%
     ></apexchart>
   </div>
 </template>
@@ -22,7 +23,7 @@ export default {
       series: [
         {
           name: "High - 2013",
-          data: [28, 29, 33, 36, 32, 32, 33],
+          data: [28, 29, 33, 36, 32, 32, 33, 1, 2, 5,50 , 70],
         },
         {
           name: "Low - 2013",
