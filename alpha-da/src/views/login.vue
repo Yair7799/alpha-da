@@ -4,7 +4,7 @@
       <v-row class="justify-center">
         <v-col cols="12" sm="6" md="4">
           <v-text-field
-            v-model="givenUsername"
+            v-model="givenUserName"
             label="שם משתמש"
             filled
             rounded
@@ -30,7 +30,7 @@
       <v-row>
         <v-col class="text-center">
           <v-btn
-            @click="login(givenUsername, givenPassword)"
+            @click="login(givenUserName, givenPassword)"
             rounded
             color="primary"
             dark
