@@ -17,13 +17,7 @@
         offset-md="0"
       >
       
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0
-        </v-card>
+        <security></security>
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -49,12 +43,14 @@
 <script>
    import intelj from '../components/intelj.vue' 
  import envents from '../components/Events.vue' 
-
+ import securityCard from '../components/SecurityCard.vue'
+ 
   export default {
     name: 'MainPage',
     components:{
         intelj:intelj,
-        events:envents
+        events:envents,
+        security: securityCard,
     },
     data: () => ({}
     ),
