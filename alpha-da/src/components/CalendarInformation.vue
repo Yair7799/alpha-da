@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .halfWidth {
-    width: 50%
+    width: 100%
 
 }
 </style>
