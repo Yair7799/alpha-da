@@ -23,7 +23,7 @@
         חשודים
       </v-btn>
          <v-btn
-          v-bind:class="{active:isSuscpets}"
+          v-bind:class="{active:!isSuscpets}"
         outlined
         style="height:25%; width:30%"
         :click="suspects()"     
@@ -94,11 +94,12 @@
     },
     methods: {
         wanteds: async () => {
-            this.criminals=  await axios.get(process.env+'/');
+            //this.criminals=  await axios.get(process.env+'/');
+            this.isSuscpets = false;
         },
         suspects: async () => {
-            this.criminals=  await axios.get(process.env+'/');
-
+            //this.criminals=  await axios.get(process.env+'/');
+            this.isSuscpets = true;
        }
   },
     watch: {
