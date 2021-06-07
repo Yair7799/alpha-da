@@ -18,10 +18,10 @@
             <v-card-text>
               <div class="text-h2 pa-4">פרטים נוספים</div>
             </v-card-text>
-            <v-card-actions class="justify-center">
+            <v-card-actions class="justify-center whiteBackground">
               <v-btn
+              outlined
                 text
-                outlined
                 @click="dialog = false"
               >סגירה</v-btn>
             </v-card-actions>
@@ -58,6 +58,10 @@ export default {
 .v-card {
     width: 100%;
     background-color: #a3a3a3 !important;
+}
+
+.v-card__text, .whiteBackground {
+    background-color: white !important;
 }
 
 
