@@ -1,8 +1,8 @@
 <template>
   <v-card>
-    <graph v-if="isGraph == true" />
-    <pie v-if="isGraph == false" />
-    <v-btn v-on:click="chageIsGraph()">גרף מבוקשים חשודים</v-btn>
+    <template v-if="this.isGraph"> <graph /> </template>
+    <template v-else><pie /></template>
+    <v-btn @click="chageIsGraph">גרף מבוקשים חשודים</v-btn>
   </v-card>
 </template>
 
@@ -13,17 +13,17 @@ import pie from "./PieChart.vue";
 export default {
   data: () => {
     return {
-      isGraph: true
-    };
+      isGraph: true,
+    }
   },
   components: {
-      graph:graph,
-      pie:pie
+    graph: graph,
+    pie: pie,
   },
   methods: {
-      chageIsGraph: () => {
-          this.isGraph =! this.isGraph;
-      }
+    chageIsGraph() {
+        this.isGraph = !this.isGraph;
+    },
   },
 };
 </script>
