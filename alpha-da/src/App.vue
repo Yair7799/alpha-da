@@ -44,21 +44,16 @@
     </v-app-bar>
 
     <v-main style="background-color:#101a30">
-      <events> </events>
- 
+      <homepage> </homepage>
     </v-main>
   </v-app>
 </template>
-
 <script>
-
-import events from "./components/Events.vue";
-
+import homepage from './pages/MainPage.vue' 
 export default {
   name: 'App',
-
   components: {
-    events
+    homepage:homepage
   },
 
   data: () => ({
