@@ -47,13 +47,7 @@
         lg="6"
         offset-lg="0"
       >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
-        </v-card>
+       <events> </events>
       </v-col>
     </v-row>
   </v-container>
@@ -61,11 +55,12 @@
 
 <script>
    import intelj from '../components/intelj.vue' 
-
+ import envents from '../components/Events.vue' 
   export default {
     name: 'MainPage',
     components:{
-        intelj:intelj
+        intelj:intelj,
+        events:envents
     },
     data: () => ({}
     ),
