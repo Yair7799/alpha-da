@@ -1,5 +1,8 @@
 import alertify from "alertify.js";
-const serverApi = 'http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz';
+import router from "./router";
+
+const serverApi =
+  "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz";
 export default {
   login,
   logout
@@ -17,27 +20,16 @@ function login(givenUserName, givenPassword) {
   return fetch(
     `${serverApi}/users/login?username=${givenUserName}&password=${givenPassword}`,
     requestOptions
-  ).then(handleResponse);
-}
-
-function handleResponse(response) {
-  return response.then(res => {
-    const data = JSON.parse(res.data());
-    if (!response.ok) {
+  ).then(response => {
+    if(!response.ok || response.status === 400){
       console.log("fail");
       alertify.error("לא הצלחנו להתחבר");
-      if (response.status !== 200) {
-        console.log(response.status);
-      }
-
-      const error = (data && data.message) || response.statusText;
-      console.log(error);
+    } else {
+      console.log("success");
+       alertify.success("התחברנו בהצלחה");
+      router.push({ name: "home" });
     }
-
-    localStorage.setItem("user", JSON.stringify(data));
-    console.log("success");
-    alertify.success("התחברנו בהצלחה");
-    //this.$router.push({ name: 'home' })
-    return data;
+  }).catch(e => {
+    console.log('There has been a problem with your fetch operation: ' + e.message);
   });
 }
