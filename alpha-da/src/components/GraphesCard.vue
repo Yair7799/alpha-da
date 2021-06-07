@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card max-width="450"  class="ml-5">
     <template v-if="this.isGraph"> <pie /> </template>
     <template v-else><graph /></template>
     <v-btn @click="chageIsGraph">גרף מבוקשים חשודים</v-btn>
