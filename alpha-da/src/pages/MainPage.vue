@@ -26,6 +26,7 @@
         md="5"
         lg="6"
       >
+      <graphes />
       </v-col>
       <v-col
         sm="6"
@@ -44,6 +45,7 @@
    import intelj from '../components/intelj.vue' 
  import envents from '../components/Events.vue' 
  import securityCard from '../components/SecurityCard.vue'
+ import graphes from '../components/GraphesCard.vue'
  
   export default {
     name: 'MainPage',
@@ -51,6 +53,7 @@
         intelj:intelj,
         events:envents,
         security: securityCard,
+        graphes: graphes
     },
     data: () => ({}
     ),
