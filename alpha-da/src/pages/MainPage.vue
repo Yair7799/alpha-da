@@ -25,7 +25,6 @@
 <script>
 import intelj from "../components/intelj.vue";
 import Calendar from "../components/Calendar.vue";
-import eventsest from "../components/EventsEst.vue";
 import securityCard from "../components/SecurityCard.vue";
 import graphes from "../components/GraphesCard.vue";
 import router from "../router";
@@ -37,7 +36,6 @@ export default {
   components: {
     intelj: intelj,
     calendar: Calendar,
-    eventsest: eventsest,
     security: securityCard,
     graphes: graphes
   },
