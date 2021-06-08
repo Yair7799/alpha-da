@@ -14,7 +14,6 @@
 import VueApexCharts from "vue-apexcharts";
 
 export default {
-  el: "#app",
   components: {
     apexchart: VueApexCharts,
   },
