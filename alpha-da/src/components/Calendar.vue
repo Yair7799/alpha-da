@@ -3,7 +3,7 @@
     <div>
       <v-card dir="rtl" class="width fullHeight">
         <v-card-title>
-            אירועים נוספים
+            אירועים ומועדים
         </v-card-title>
         <v-card-actions>
             <v-list>
