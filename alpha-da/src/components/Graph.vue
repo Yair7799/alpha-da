@@ -2,10 +2,10 @@
   <div id="chart">
     <apexchart
       type="line"
-      height=350vh
+      height="350vh"
       :options="chartOptions"
       :series="series"
-      width=100%
+      width="100%"
     ></apexchart>
   </div>
 </template>
@@ -14,7 +14,6 @@
 import VueApexCharts from "vue-apexcharts";
 
 export default {
-  el: "#app",
   components: {
     apexchart: VueApexCharts,
   },
@@ -22,12 +21,12 @@ export default {
     return {
       series: [
         {
-          name: "High - 2013",
-          data: [28, 29, 33, 36, 32, 32, 33, 1, 2, 5,50 , 70],
+          name: "אירועים חריגים",
+          data: [1,50]
         },
         {
-          name: "Low - 2013",
-          data: [12, 11, 14, 18, 17, 13, 13],
+          name: "צפי אירועים חריגים",
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
       ],
       chartOptions: {
@@ -68,7 +67,8 @@ export default {
           size: 1,
         },
         xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          min: 0,
+          max: 12,
           title: {
             text: "Month",
           },
@@ -77,8 +77,8 @@ export default {
           title: {
             text: "Temperature",
           },
-          min: 5,
-          max: 40,
+          min: 0,
+          max: 500,
         },
         legend: {
           position: "top",
@@ -95,6 +95,6 @@ export default {
 
 <style scoped>
 #chart {
- background-color:white
+  background-color: white;
 }
 </style>

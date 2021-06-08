@@ -13,19 +13,18 @@
 import VueApexCharts from "vue-apexcharts";
 
 export default {
-  el: "#app",
   components: {
     apexchart: VueApexCharts,
   },
   data: function () {
     return {
-      series: [44, 55, 13, 43, 22],
+      series: [0, 0],
       chartOptions: {
         chart: {
           width: 380,
           type: "pie",
         },
-        labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+        labels: ["מבוקשים", "חשודים"],
         responsive: [
           {
             breakpoint: 480,
@@ -41,6 +40,13 @@ export default {
         ],
       },
     };
+  },
+  mounted() {
+    fetch(
+      "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz/intelligence/number/suspectsRequested"
+    )
+      .then((response) => response.json())
+      .then((data) => (this.series = [data.suspects, data.requested]));
   },
 };
 </script>
