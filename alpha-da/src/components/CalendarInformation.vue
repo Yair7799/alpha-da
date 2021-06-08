@@ -1,6 +1,6 @@
 <template>
 <v-card>
-    <calendar class="halfWidth"></calendar>
+    <calendar></calendar>
 </v-card>
     
 </template>
@@ -17,8 +17,5 @@ export default {
 </script>
 
 <style scoped>
-.halfWidth {
-    width: 100%
 
-}
 </style>

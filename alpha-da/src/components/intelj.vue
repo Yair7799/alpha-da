@@ -39,7 +39,7 @@
 
     <div style="margin-right:5%;  margin-top:2%; margin-left:8%;">
 
-     <v-row style="padding-top:5px;"  v-for="criminal in criminals" :key="criminal.SSN" >
+     <v-row style="padding-top:5px;"  v-for="criminal in this.criminals" :key="criminal.SSN" >
         <v-col md="12" style="padding-top:1%">
      <div style="background-color:#070129" >
         <v-row>
@@ -85,34 +85,33 @@
   export default {
     name: 'intelj',
 
-    data: () => ({
+    data() { return {
         criminals:[],
-        allCriminals:[],
+        allCriminals:[{}],
         isSuscpets: true
     }
-    ),
-    created: function () {  
-       axios.get(adress+'/intelligence/all/suspectsRequested').then((res)=>{this.allCriminals=res.data;
-        this.criminals = res.data.suspects;}); 
-      
+    },
+      beforeCreate () {  
+     axios.get(adress+'/intelligence/all/suspectsRequested').then((res) => {
+            this.allCriminals=res.data;
+             this.criminals = res.data.suspects });
     },
     methods: {
-        wanteds: function ()  {
+        wanteds()  {
             this.isSuscpets = false;
             this.criminals=this.allCriminals.requested;
-           
         },
-        suspects: function () {
+        suspects () {
            
              this.isSuscpets = true;
              this.criminals=this.allCriminals.suspects;        
        }
   },
-    watch: {
-    criminals: function () {
+    // watch: {
+    // criminals: function () {
      
-    },
-    }
+    // },
+    // }
   }
 </script>
 
