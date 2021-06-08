@@ -91,14 +91,18 @@ export default {
     };
   },
   mounted() {
-    const starFullDate = new Date();
-    const endFullDate = starFullDate;
+    const starFullDate = new Date(2021,2,1);
+    let endFullDate;
+    if(endFullDate.getDate() < 7){
+      endFullDate = new Date(starFullDate.getFullYear(), starFullDate.getMonth()-1, starFullDate.getDate()-7);
+    } else if(starFullDate.getMonth() == 1){
+      endFullDate = new Date(starFullDate.getFullYear()-1, starFullDate.getMonth()-1, starFullDate.getDate()-7);
+    } else {
+      endFullDate = new Date(starFullDate.getFullYear(), starFullDate.getMonth(), starFullDate.getDate()-7);
+    }
+    alert(endFullDate)
     let startDate = `${starFullDate.getFullYear()}-${starFullDate.getMonth()+1}-${starFullDate.getDate()}`
-    let endDate;
-    // let endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
-    if(endFullDate.getDate() > 7){
-      endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
-    } else if(endFullDate.getDate())
+    let endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
     alert("startDate: " + startDate + "endDate:" + endDate)
   }
 };
