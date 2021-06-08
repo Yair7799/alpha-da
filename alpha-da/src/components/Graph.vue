@@ -22,11 +22,11 @@ export default {
       series: [
         {
           name: "אירועים חריגים",
-          data: [1,50]
+          data: [1, 50],
         },
         {
           name: "צפי אירועים חריגים",
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         },
       ],
       chartOptions: {
@@ -90,21 +90,51 @@ export default {
       },
     };
   },
-  mounted() {
-    const starFullDate = new Date(2021,2,1);
-    let endFullDate;
-    if(endFullDate.getDate() < 7){
-      endFullDate = new Date(starFullDate.getFullYear(), starFullDate.getMonth()-1, starFullDate.getDate()-7);
-    } else if(starFullDate.getMonth() == 1){
-      endFullDate = new Date(starFullDate.getFullYear()-1, starFullDate.getMonth()-1, starFullDate.getDate()-7);
-    } else {
-      endFullDate = new Date(starFullDate.getFullYear(), starFullDate.getMonth(), starFullDate.getDate()-7);
+  async mounted() {
+    // const starFullDate = new Date();
+    // let endFullDate = starFullDate;
+    // if (endFullDate.getDate() < 7) {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear(),
+    //     starFullDate.getMonth() - 1,
+    //     starFullDate.getDate() - 7
+    //   );
+    // } else if (starFullDate.getMonth() == 1) {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear() - 1,
+    //     starFullDate.getMonth() - 1,
+    //     starFullDate.getDate() - 7
+    //   );
+    // } else {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear(),
+    //     starFullDate.getMonth(),
+    //     starFullDate.getDate() - 7
+    //   );
+    // }
+    // let startDate = `${starFullDate.getFullYear()}-${
+    //   starFullDate.getMonth() + 1
+    // }-${starFullDate.getDate()}`;
+    // let endDate = `${endFullDate.getFullYear()}-${
+    //   endFullDate.getMonth() + 1
+    // }-${endFullDate.getDate()}`;
+
+    const startDate = "2021-06-01";
+    const endDate = "2021-06-08";
+    const url = "http://localhost:8080/security/dateEvents";
+    let weekEvents = [];
+    await fetch(`${url}/${startDate}/${endDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        weekEvents = data;
+      });
+
+    for (i = 0; i < 7; i++) {
+       weekEvents.filter(
+        (event) => event.date.substr(0, 10) === this.dayToDisplay
+      );
     }
-    alert(endFullDate)
-    let startDate = `${starFullDate.getFullYear()}-${starFullDate.getMonth()+1}-${starFullDate.getDate()}`
-    let endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
-    alert("startDate: " + startDate + "endDate:" + endDate)
-  }
+  },
 };
 </script>
 
