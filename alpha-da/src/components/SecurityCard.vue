@@ -111,11 +111,12 @@ export default {
     },
   },
   methods: {},
-  // mounted() {
-  //   fetch(
-  //     "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
-  //   ).then((response) => (this.allEvents = response.json));
-  // },
+  mounted() {
+    fetch(
+      "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
+    ).then((response) => response.json())
+    .then(data => this.allEvents = [].concat.apply([], data))
+  },
 };
 </script>
 
@@ -125,6 +126,7 @@ export default {
 .select {
   max-width: 35%;
 }
+
 
 .v-card,
 .v-application {
