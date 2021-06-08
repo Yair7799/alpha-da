@@ -57,9 +57,9 @@ export default {
           align: "left",
         },
         grid: {
-          borderColor: "#e7e7e7",
+          borderColor: "white",
           row: {
-            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            colors: ["#101a30", "transparent"], // takes an array which will be repeated on columns
             opacity: 0.5,
           },
         },
@@ -90,6 +90,17 @@ export default {
       },
     };
   },
+  mounted() {
+    const starFullDate = new Date();
+    const endFullDate = starFullDate;
+    let startDate = `${starFullDate.getFullYear()}-${starFullDate.getMonth()+1}-${starFullDate.getDate()}`
+    let endDate;
+    // let endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
+    if(endFullDate.getDate() > 7){
+      endDate = `${endFullDate.getFullYear()}-${endFullDate.getMonth()+1}-${endFullDate.getDate()}`
+    } else if(endFullDate.getDate())
+    alert("startDate: " + startDate + "endDate:" + endDate)
+  }
 };
 </script>
 
