@@ -39,7 +39,7 @@
 
     <div style="margin-right:5%;  margin-top:2%; margin-left:8%;">
 
-     <v-row style="padding-top:5px;"  v-for="criminal in criminals" :key="criminal.firstname" >
+     <v-row style="padding-top:5px;"  v-for="criminal in criminals" :key="criminal.SSN" >
         <v-col md="12" style="padding-top:1%">
      <div style="background-color:#070129" >
         <v-row>
@@ -91,20 +91,21 @@
         isSuscpets: true
     }
     ),
-    created: async () => {  
-       this.allCriminals=  await axios.get(adress+'/intelligence/all/suspectsRequested',{headers: {'Access-Control-Allow-Origin': '*'},}); 
-       this.criminals = this.allCriminals.suspects;
+    created: function () {  
+       axios.get(adress+'/intelligence/all/suspectsRequested').then((res)=>{this.allCriminals=res.data;
+        this.criminals = res.data.suspects;}); 
+      
     },
     methods: {
-        wanteds: async () => {
-            this.criminals=  await axios.get(adress+'/intelligence/all/suspectsRequested');
+        wanteds: function ()  {
             this.isSuscpets = false;
             this.criminals=this.allCriminals.requested;
+           
         },
-        suspects: async () => {
-            this.criminals=  await axios.get(adress+'/intelligence/all/suspectsRequested');
-            this.isSuscpets = true;
-            this.criminals=this.allCriminals.suspects;
+        suspects: function () {
+           
+             this.isSuscpets = true;
+             this.criminals=this.allCriminals.suspects;        
        }
   },
     watch: {
