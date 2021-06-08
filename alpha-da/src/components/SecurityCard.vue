@@ -2,19 +2,34 @@
   <v-card style="direction: rtl" class="mx-auto mainCard" outlined color="info">
     <v-list-item three-line class="d-flex mx-auto">
       <v-list-item-title class="mb-1"> ציר אבטחתי </v-list-item-title>
-      <v-btn class="mx-2" fab dark small color="primary">
+      <v-dialog
+        v-model="mapDialog"
+        transition="dialog-bottom-transition"
+        max-width="600"
+      ></v-dialog>
+      <v-btn class="mx-2" @click="mapDialog = true" fab dark small color="primary">
         <v-icon dark> mdi-map </v-icon>
       </v-btn>
       <v-dialog
-      v-model="dialog"
-      transition="dialog-bottom-transition"
-      max-width="600"
-    >
-      <v-card style="direction: rtl">
-         <v-date-picker v-model="dayToDisplay"></v-date-picker>
-      </v-card>
+        v-model="calendarDialog"
+        transition="dialog-bottom-transition"
+        max-width="600"
+      >
+        <v-card style="direction: rtl">
+          <v-date-picker v-model="dayToDisplay"></v-date-picker>
+          <v-card-actions class="justify-center">
+            <v-btn outlined text @click="calendarDialog = false">סגירה</v-btn>
+          </v-card-actions>
+        </v-card>
       </v-dialog>
-      <v-btn class="mx-2" fab dark small color="primary" @click="activateDialog">
+      <v-btn
+        class="mx-2"
+        fab
+        dark
+        small
+        color="primary"
+        @click="calendarDialog = true"
+      >
         <v-icon dark> mdi-calendar </v-icon>
       </v-btn>
     </v-list-item>
@@ -50,7 +65,8 @@ export default {
   components: { EventDetailsCard },
   name: "SecurityCard",
   data: () => ({
-    dialog: false,
+    mapDialog: false,
+    calendarDialog: false,
     dayToDisplay: new Date().toISOString().substr(0, 10),
     locations: [
       "אזור נוכחי",
@@ -94,17 +110,11 @@ export default {
       );
     },
   },
-  methods: {
-    activateDialog() {
-      this.dialog = true;
-    }
-  },
+  methods: {},
   // mounted() {
-  //     axios
-  //       .get(
-  //         "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
-  //       )
-  //       .then((response) => (this.allEvents = response.data));
+  //   fetch(
+  //     "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
+  //   ).then((response) => (this.allEvents = response.json));
   // },
 };
 </script>
