@@ -41,8 +41,8 @@
      <v-row style="padding-top:5px; background-color:#070129" v-for="criminal in this.criminals" :key="criminal.SSN" >
             <v-img 
                 style="border-radius:100%; margin-right:20px; margin-top:1%; margin-bottom:1%;"
-                 max-height="90"
-                 max-width="90"
+                 max-height="60"
+                 max-width="60"
                 :src="criminal.imageURL"
            ></v-img>
         <v-col>
@@ -82,7 +82,7 @@
 
     data() { return {
    
-        criminals:[{"f":2}],
+        criminals:[{'ilay':1}],
         isSuscpets: true,
         isReqested:false
     }
@@ -94,13 +94,13 @@
        async wanteds()  {
             this.isSuscpets = false;
             this.isReqested=true;
-             this.criminals= await this.getsWanted();
+           //  this.criminals= await this.getsWanted();
         },
        async suspects () {
            
              this.isSuscpets = true;
             this.isReqested=false;
-             this.criminals= await this.getSuspects();
+          //   this.criminals= await this.getSuspects();
        }
 
        , async getsWanted(){
