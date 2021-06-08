@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <div>
-      <v-card dir="rtl" class="halfWidth fullHeight">
+      <v-card dir="rtl" class="width fullHeight">
         <v-card-title>
             אירועים נוספים
         </v-card-title>
@@ -31,8 +31,8 @@ import datesData from '../db/dates.json';
       currDate: new Date().toISOString().substr(0, 10),
       events : datesData,
       eventsDates : datesData.map((event) => {return event.date}),
-
-      
+      currMonthYear: "",
+      wasMounted: false,
     }),
    
     methods: {
@@ -40,14 +40,28 @@ import datesData from '../db/dates.json';
         if (this.eventsDates.includes(date)) return ['#101a3e']
       },
       getCurrMonthAndYear() {
-        return this.$refs.datePicker.tableDate;
+        const currMonthYear = this.$refs.datePicker.tableDate;
+        if (currMonthYear) {
+          return currMonthYear;
+        }
       }
+    },
+
+    mounted: function() {
+      this.currMonthYear = this.$refs.datePicker.tableDate;
+      this.wasMounted = true;
     },
 
     computed: {
       currMonthEvents: function() {
-        const currMonth = this.getCurrMonthAndYear();
-        return this.events.filter((event) => event.date.includes(currMonth))
+        let currMonthYear = "";
+        if(this.wasMounted) {
+           currMonthYear = this.$refs.datePicker.tableDate;
+        
+        } else {
+          currMonthYear = this.currMonthYear
+        }
+        return this.events.filter((event) => event.date.includes(currMonthYear))
       }
     }
   }
@@ -63,7 +77,8 @@ import datesData from '../db/dates.json';
     background-color: #c4c4c4;
 }
 
-.fullHeight {
-  height: 100%;
+.width {
+  width: 450px;
+  height: 100%
 }
 </style>
