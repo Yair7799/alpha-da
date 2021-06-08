@@ -1,30 +1,54 @@
 <template>
   <v-row>
     <div>
+      <v-card dir="rtl" class="halfWidth fullHeight">
+        <v-card-title>
+            אירועים נוספים
+        </v-card-title>
+        <v-card-actions>
+            <v-list>
+            <v-list-item v-for="event in this.currMonthEvents" :key="event.name"> {{"• " + event.date + ":  " + event.name }}</v-list-item>
+            </v-list>
+
+        </v-card-actions>
+    </v-card>
+    </div>
+    <div>
       <v-date-picker
-        v-model="date2"
-        :event-color="date => date[9] % 2 ? 'red' : 'yellow'"
-        :events="functionEvents"
+      ref="datePicker"
+        v-model="currDate"
+        :events="eventsToDisplay"
       ></v-date-picker>
     </div>
   </v-row>
 </template>
 <script>
+import datesData from '../db/dates.json';
  
   export default {
     name: "Calendar",
     data: () => ({
-      today: '2019-01-10',
-      date2: new Date().toISOString().substr(0, 10),
+      currDate: new Date().toISOString().substr(0, 10),
+      events : datesData,
+      eventsDates : datesData.map((event) => {return event.date}),
 
       
     }),
    
     methods: {
-     functionEvents (date) {
-        const [,, day] = date.split('-')
-        if ([1, 19, 22].includes(parseInt(day, 10))) return ['#101a3e']
+     eventsToDisplay (date) {
+        if (this.eventsDates.includes(date)) return ['#101a3e']
       },
+      getCurrMonthAndYear() {
+        return this.$refs.datePicker.tableDate;
+      }
+    },
+
+    computed: {
+      currMonthEvents: function() {
+        const currMonth = this.getCurrMonthAndYear();
+        return this.events.filter((event) => event.date.includes(currMonth))
+      }
     }
   }
   
@@ -33,5 +57,13 @@
 <style scoped>
 .round {
   border-radius: 70%;
+}
+
+.v-list {
+    background-color: #c4c4c4;
+}
+
+.fullHeight {
+  height: 100%;
 }
 </style>
