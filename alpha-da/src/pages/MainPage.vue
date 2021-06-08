@@ -7,17 +7,16 @@
       <v-col sm="5" offset-sm="2" md="6" offset-md="0">
         <security></security>
       </v-col>
-      <v-col>
-        <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
-      </v-col>
     </v-row>
     <v-row no-gutters>
-      <v-col sm="6" md="6" lg="6">
-        <graphes class="halfWidth" />
-        <eventsest></eventsest>
+      <v-col sm="6" md="6" lg="6" class="halfWidth">
+        <graphes />
       </v-col>
       <v-col sm="6" md="6" offset-md="2" lg="6" offset-lg="0">
         <calendar></calendar>
+      </v-col>
+      <v-col>
+        <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
       </v-col>
     </v-row>
   </v-container>
