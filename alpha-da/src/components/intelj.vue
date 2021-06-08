@@ -24,7 +24,7 @@
         חשודים
       </v-btn>
          <v-btn
-         :class="{active:!isSuscpets}"
+         :class="{active:isReqested}"
         outlined
         style="height:25%; width:30%"
         :click="suspects()"     
@@ -82,26 +82,30 @@
 
     data() { return {
    
-        criminals:[{ilay:123}],
-        isSuscpets: true
+        criminals:[{"f":2}],
+        isSuscpets: true,
+        isReqested:false
     }
     },
       created: async function () {  
-            this.criminals= await this.getSuspects();
+            this.criminals= await this.getsWanted();
     },
     methods: {
-        wanteds()  {
+       async wanteds()  {
             this.isSuscpets = false;
-            this.criminals=this.allCriminals.requested;
+            this.isReqested=true;
+             this.criminals= await this.getsWanted();
         },
-        suspects () {
+       async suspects () {
            
              this.isSuscpets = true;
-             this.criminals=this.allCriminals.suspects;        
+            this.isReqested=false;
+             this.criminals= await this.getSuspects();
        }
 
-       , async getCriminals(){
-           return await axios.get(adress+'/intelligence/all/suspectsRequested')
+       , async getsWanted(){
+              let all= await axios.get(adress+'/intelligence/all/suspectsRequested');
+           return all.data.requested;
        }
        ,
        async getSuspects(){
