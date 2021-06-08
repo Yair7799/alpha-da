@@ -18,7 +18,7 @@ export default {
   },
   data: function () {
     return {
-      series: [44, 55],
+      series: [0, 0],
       chartOptions: {
         chart: {
           width: 380,
@@ -40,6 +40,13 @@ export default {
         ],
       },
     };
+  },
+  mounted() {
+    fetch(
+      "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz/intelligence/number/suspectsRequested"
+    )
+      .then((response) => response.json())
+      .then((data) => (this.series = [data.suspects, data.requested]));
   },
 };
 </script>
