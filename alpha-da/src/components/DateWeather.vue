@@ -1,7 +1,7 @@
 <template>
-  <v-card id="date-weather" class="mx-auto" width="14%" outlined>
+  <v-card id="date-weather" height="33%" width="13.9%" outlined>
     <v-list-item three-line>
-      <v-list-item-avatar tile size="80">
+      <v-list-item-avatar tile size="25%">
         <v-img style="width:100%" :src="getImgUrl(this.image)"/>
       </v-list-item-avatar>
       <v-list-item-content>
@@ -64,5 +64,9 @@ export default {
 <style scoped>
 #date-weather {
   margin: 2px;
+}
+
+.try {
+  height: 100%;
 }
 </style>

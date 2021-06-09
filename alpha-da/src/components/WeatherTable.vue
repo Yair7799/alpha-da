@@ -23,6 +23,7 @@ export default {
     return {
       temperature: 270,
       date: new Date(),
+
       temps: []
     };
   },
