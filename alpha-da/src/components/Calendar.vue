@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="ml-3">
   <v-row>
     <div>
       <v-card dir="rtl" class="width fullHeight">
@@ -7,7 +7,7 @@
           אירועים ומועדים
         </v-card-title>
         <v-card-actions>
-          <v-list>
+          <v-list rounded >
             <v-list-item
               v-for="event in this.currMonthEvents"
               :key="event.name"
@@ -20,6 +20,8 @@
     </div>
     <div>
       <v-date-picker
+      no-title
+      class="tall"
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
@@ -91,7 +93,15 @@ export default {
 }
 
 .width {
-  width: 420px;
+  width: 430px;
   height: 328px;
+}
+
+.tall {
+  height: 312px
+}
+
+.fullHeight {
+  height: 312px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-card id="date-weather" height="3%" width="11%" outlined>
+  <v-card id="date-weather" height="33%" width="13.9%" outlined>
     <v-list-item three-line>
       <v-list-item-avatar tile size="25%">
         <v-img style="width:100%" :src="getImgUrl(this.image)"/>
@@ -67,6 +67,6 @@ export default {
 }
 
 .try {
-  height: 25%;
+  height: 100%;
 }
 </style>
