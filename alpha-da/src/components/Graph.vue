@@ -22,11 +22,7 @@ export default {
       series: [
         {
           name: "אירועים חריגים",
-          data: [1, 50],
-        },
-        {
-          name: "צפי אירועים חריגים",
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          data: [0,0,0,0,0,0,0],
         },
       ],
       chartOptions: {
@@ -53,8 +49,8 @@ export default {
           curve: "smooth",
         },
         title: {
-          text: "Average High & Low Temperature",
-          align: "left",
+          text: "גרף אירועים חריגים",
+          align: "center",
         },
         grid: {
           borderColor: "white",
@@ -67,8 +63,8 @@ export default {
           size: 1,
         },
         xaxis: {
-          min: 0,
-          max: 12,
+          min: 1,
+          max: 7,
           title: {
             text: "Month",
           },
@@ -121,19 +117,44 @@ export default {
 
     const startDate = "2021-06-01";
     const endDate = "2021-06-08";
-    const url = "http://localhost:8080/security/dateEvents";
-    let weekEvents = [];
+    const url =
+      "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz/security/dateEvents";
+    let weekEventsMatrix = [];
     await fetch(`${url}/${startDate}/${endDate}`)
       .then((response) => response.json())
       .then((data) => {
-        weekEvents = data;
+        weekEventsMatrix = data;
       });
 
-    for (i = 0; i < 7; i++) {
-       weekEvents.filter(
-        (event) => event.date.substr(0, 10) === this.dayToDisplay
-      );
+    let weekEventsArray = [];
+
+    for (let index = 0; index < weekEventsMatrix.length; index++) {
+      for (let innerI = 0; innerI < weekEventsMatrix[index].length; innerI++) {
+        weekEventsArray.push(weekEventsMatrix[index][innerI]);
+      }
     }
+
+    let count = 0;
+    this.series[0].data = [];
+    let weekDates = [
+      "2021-06-01",
+      "2021-06-02",
+      "2021-06-03",
+      "2021-06-04",
+      "2021-06-05",
+      "2021-06-06",
+      "2021-06-07",
+    ];
+
+    weekDates.forEach((day) => {
+      weekEventsArray.forEach((event) => {
+        if (day == event.date.slice(0, 10)) {
+          count++;
+        }
+      });
+      this.series[0].data.push(count);
+      count = 0;
+    });
   },
 };
 </script>
