@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="450"
+    max-width="500"
     height="300"
     outlined
     style="background-color:#E2DFDB; direction:rtl"
@@ -14,20 +14,20 @@
         </h1>
         <v-list-item-title class="text-h5 mb-1">
            <v-btn
-           :class="{active:isSuscpets}"
+           :class="{active:!isSuscpets}"
         outlined
           style="height:25%; width:30%"  
             
-            @onClick="wanteds()"
+            v-on:click="wanteds()"
              
       >
         חשודים
       </v-btn>
          <v-btn
-         :class="{active:isReqested}"
+         :class="{active:!isReqested}"
         outlined
         style="height:25%; width:30%"
-        @onClick="suspects()"     
+        v-on:click="suspects()"     
       >
         מבוקשים
       </v-btn>
@@ -37,8 +37,8 @@
 
     </v-list-item>
 
-     <div style="margin-right:5%;  margin-top:2%; margin-left:8%;">
-     <v-row style="padding-top:5px; background-color:#070129" v-for="(criminal,index) in this.criminals" :key="index" >
+     <div style="margin-right:5%;  margin-left:8%; " class="scroll">
+     <v-row style="padding-top:15px;  border-bottom-style:solid; border-width: 1px; border-color:grey; width:100%; background-color:#070129" v-for="(criminal,index) in this.criminals" :key="index" >
             <v-img 
                 style="border-radius:100%; margin-right:20px; margin-top:1%; margin-bottom:1%;"
                  max-height="60"
@@ -128,6 +128,14 @@
 <style scoped>
 .active{
     background-color:grey;
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: 60%;
+  width:95%;
+
+  
 }
 
 </style>
