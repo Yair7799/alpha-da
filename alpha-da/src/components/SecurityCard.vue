@@ -1,7 +1,9 @@
 <template>
-  <v-card style="direction: rtl;" class="mx-auto mainCard" outlined >
+  <v-card style="direction: rtl;" class="mx-auto mainCard" outlined>
     <v-list-item three-line class="d-flex mx-auto">
-      <v-list-item-title class="">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
+      <v-list-item-title class=""
+        >{{ "ציר אבטחתי: " + this.dayToDisplay }}
+      </v-list-item-title>
       <v-dialog
         v-model="mapDialog"
         transition="dialog-bottom-transition"
@@ -13,11 +15,19 @@
             :src="`http://alpha-maps-git-tmzmap2.apps.openforce.openforce.biz/`"
             width="1500x"
             height="500px"
-            frameborder="0" >
-           </iframe>
+            frameborder="0"
+          >
+          </iframe>
         </div>
       </v-dialog>
-      <v-btn class="mx-2" @click="mapDialog = true" fab dark small color="primary">
+      <v-btn
+        class="mx-2"
+        @click="mapDialog = true"
+        fab
+        dark
+        small
+        color="primary"
+      >
         <v-icon dark> mdi-map </v-icon>
       </v-btn>
       <v-dialog
@@ -68,7 +78,9 @@
 </template>
 <script>
 import EventDetailsCard from "./EventDetailsCard.vue";
-// import axios from "axios";
+import { mapQuest } from "../../prodAdress";
+import { mapQuestKey } from "../../apiKeys";
+import axios from "axios";
 
 export default {
   components: { EventDetailsCard },
@@ -77,30 +89,30 @@ export default {
     mapDialog: false,
     calendarDialog: false,
     dayToDisplay: new Date().toISOString().substr(0, 10),
-    locations: [
-      "אזור נוכחי",
-      "ברונקס",
-      "ברוקלין",
-      "מנהטן",
-      "קווינס",
-      "סטטן איילנד",
-    ],
-    allEvents: [],
+    locations: [],
+    allEvents: []
   }),
   computed: {
     eventsToDisplay() {
       return this.allEvents.filter(
-        (event) => event.date.substr(0, 10) === this.dayToDisplay
+        event => event.date.substr(0, 10) === this.dayToDisplay
       );
     },
   },
   methods: {},
-  mounted() {
-    fetch(
+  async mounted() {
+    await fetch(
       "http://police-server-securityapp2.apps.openforce.openforce.biz/de/dateEvents/2021-01-01/2022-01-01"
-    ).then((response) => (response.json()))
-    .then((data) => this.allEvents = data.flat(1));
-  },
+    )
+      .then(response => response.json())
+      .then(data => (this.allEvents = data.flat(1)));
+
+    this.locationsData = await this.allEvents.map(event=>axios.get(
+      `${mapQuest}?key=${mapQuestKey}&location=${event.lat},${event.lon}&includeRoadMetadata=true&includeNearestIntersection=true`
+    ).then(res=>res.data));
+
+    console.log(this.locationsData);
+  }
 };
 </script>
 
@@ -110,7 +122,6 @@ export default {
 .select {
   max-width: 35%;
 }
-
 
 .v-card,
 .v-application {

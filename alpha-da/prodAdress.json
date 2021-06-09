@@ -1,1 +1,4 @@
-{"adress":"http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz"}
+{
+  "adress": "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz",
+  "mapQuest": "http://www.mapquestapi.com/geocoding/v1/reverse"
+}
