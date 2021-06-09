@@ -19,9 +19,7 @@
         <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
       </v-col>
     </v-row>
-    <footer>
-      <weather-table></weather-table>
-    </footer>
+    <weather-table></weather-table>
   </v-container>
 </template>
 
