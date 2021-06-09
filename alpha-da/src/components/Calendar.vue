@@ -26,7 +26,7 @@
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
-        no-title
+        
         readonly
       ></v-date-picker>
     </div>
