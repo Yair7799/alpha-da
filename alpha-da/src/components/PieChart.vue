@@ -5,6 +5,7 @@
       width="380"
       :options="chartOptions"
       :series="series"
+      style="margin-left:15% !important"
     ></apexchart>
   </div>
 </template>

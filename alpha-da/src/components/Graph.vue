@@ -17,13 +17,50 @@ export default {
   components: {
     apexchart: VueApexCharts,
   },
+  created: function () {
+     this.$bus.on('changedGraph', (data) =>{
+       let number =parseInt(data.value);
+        switch(data.picker){
+        case "2021-06-04":
+          this.series[1].data[0]=number;
+            break;
+        case "2021-06-05":
+          this.series[1].data[1]=number;
+            break;
+        case "2021-06-06":
+          this.series[1].data[2]=number;
+            break;
+        case "2021-06-07":
+          this.series[1].data[3]=number;
+            break;
+        case "2021-06-08":
+          this.series[1].data[4]=number;
+            break;
+        case "2021-06-09":
+          this.series[1].data[5]=number;
+            break;
+        case "2021-06-10":
+          this.series[1].data[6]=number;
+            break;
+           
+        }
+        } );
+  
+  },
   data: function () {
     return {
+
+      refresh:true,
       series: [
         {
           name: "אירועים חריגים",
           data: [0,0,0,0,0,0,0],
         },
+        {
+          name: "צפי",
+          data: [1,4,2,6,7,2,2],
+        },
+        
       ],
       chartOptions: {
         chart: {

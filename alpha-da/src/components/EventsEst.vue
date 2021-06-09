@@ -10,10 +10,10 @@
           <v-date-picker v-model="picker"></v-date-picker>
         </v-row>
 
-        <v-text-field label="מס' צפוי של אירועים"></v-text-field>
+        <v-text-field label="מס' צפוי של אירועים" v-model="value"></v-text-field>
 
         <v-card-actions>
-          <v-btn outlined text @click="dialog = false">פרסם</v-btn>
+          <v-btn outlined text @click="dialog = false , addToChart()">פרסם</v-btn>
         </v-card-actions>
       </v-card></v-dialog
     >
@@ -23,12 +23,20 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       dialog: false,
       picker: new Date().toISOString().substr(0, 10),
+      value:0,
     };
+  },
+  methods: {
+    addToChart() {
+         this.$bus.emit('changedGraph',{"picker":this.picker, "value":this.value});
+
+    },
   },
 };
 </script>
