@@ -1,4 +1,33 @@
 <template>
+<div>
+
+   <v-dialog
+      v-model="dialog"
+      transition="dialog-bottom-transition"
+      max-width="600"
+    >
+
+      <v-card style="direction: rtl">
+        <v-toolbar color="primary" dark>פרטים נוספים</v-toolbar>
+        <v-card-text>
+          <v-img 
+                style="border-radius:100%; margin-right:20px; margin-top:1%; margin-bottom:1%;"
+                 max-height="60"
+                 max-width="60"
+                :src="currentCriminal[0].imageURL"
+           ></v-img>
+    
+        <p style="color:white; margin-bottom:0%; font-weight:bold" >{{currentCriminal[0].firstname}} </p>            
+        <p style="color:#E7E7E7; margin-bottom:2%; font-weight:300; font-size:80%">{{currentCriminal[0].SSN}} </p>
+
+        </v-card-text>
+        <v-card-actions class="justify-center whiteBackground">
+          <v-btn outlined text @click="dialog = false">סגירה</v-btn>
+        </v-card-actions>
+      </v-card>
+
+    </v-dialog>
+
   <v-card
     class="mx-auto"
     max-width="500"
@@ -55,10 +84,11 @@
       tile
       color="success"
       style="margin-top:2%"
+      text @click="dialog = true, getCriminalDetails(criminal.SSN)"
     > 
       מעבר לפרופיל
       <v-icon dark>
-        mdi-plus
+          mdi-arrow-left
       </v-icon>
     </v-btn>
      
@@ -72,6 +102,11 @@
     
   </v-card>
 
+   
+
+
+  </div>
+
 </template>
 
 <script>
@@ -84,14 +119,14 @@
     data() { return {
    
         criminals:[{'ilay':1}],
-        isSuscpets: true,
-        isReqested:false, }
+        isSuscpets: false,
+        isReqested:true,
+        apiAdress:'http://app-api-f-intelscraping2.apps.openforce.openforce.biz/profile/all/total',
+         dialog: false,
+         currentCriminal:{} }
     },
       created: async function () {  
-          const arr = await this.getsWanted();
-          arr.forEach((item, i) => {
-            this.$set(this.criminals, this.criminals.length + i - 1, item);
-          })  
+         this.criminals = await this.getsWanted();
     },
     methods: {
        async wanteds()   {
@@ -115,6 +150,12 @@
 
            let all= await axios.get(adress+'/intelligence/all/suspectsRequested');
            return all.data.suspects;
+       },
+       async getCriminalDetails(ssn) {
+           let allDataArray= await axios.get(this.apiAdress);
+           this.currentCriminal= allDataArray.data.filter(criminal => 
+               (criminal.SSN === ssn)
+           );
        }
   },
     watch: {
