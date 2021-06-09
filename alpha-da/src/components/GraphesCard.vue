@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="450" class="card" style="background-color:#101a30">
+  <v-card class="card" style="background-color:#101a30">
     <pie v-show="this.isGraph" class="pie"/>
     <graph v-show="!this.isGraph" />
     <v-row md="6">
@@ -38,9 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.card{
-    margin-left: 24.5%;
-}
+
 .eventbtn{
     margin-top: 2%;
     margin-left: 25%
