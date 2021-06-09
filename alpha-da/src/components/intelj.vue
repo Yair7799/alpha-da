@@ -49,7 +49,7 @@
   
         <v-divider></v-divider>
 
-        <v-card-text style="color:white !important; background-color:#BC263F !important; direction:rtl  ">
+        <v-card-text style="color:white !important; background-color:#264653 !important; direction:rtl  ">
         מספר בטחון סוציאלי:    {{currentCriminal[0].SSN}} 
             <br/>
         פלאפון:    {{currentCriminal[0].phoneNumber}} 
@@ -57,7 +57,7 @@
          כתובת:     {{currentCriminal[0].address}}
         </v-card-text>
 
-         <v-card-text style="color:white !important; background-color:#7626BC !important; direction:rtl  ">
+         <v-card-text style="color:white !important; background-color:#2a9d8f !important; direction:rtl  ">
          <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" > רישיון נהיגה </h3>
         התחלה:    {{currentCriminal[0].drivingLicense.start.slice(0,10)}} 
             <br/>
@@ -66,7 +66,7 @@
          מספר רשיון:     {{currentCriminal[0].drivingLicense.status}}
         </v-card-text>
 
-          <v-card-text style="color:white !important; background-color:green !important; direction:rtl ">
+          <v-card-text style="color:white !important; background-color:#264653 !important; direction:rtl ">
          <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" >צווים ודוחות</h3>
          <div v-for="(report,index) in currentCriminal[0].reports" :key="index">
         תחילת תוקף:    {{report.startingDate.slice(0,10)}} 
