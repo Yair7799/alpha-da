@@ -1,9 +1,93 @@
 <template>
+<div>
+
+   <v-dialog
+      v-model="dialog"
+      transition="dialog-bottom-transition"
+      max-width="350"
+      
+     
+    >
+
+    <v-card
+     v-if="dialog"
+     
+    
+    style="background-color:#070129 !important;  "
+    max-width="400"  
+  >
+  <div style="display: flex !important; 
+  align-items: center !important; flex-direction: column; padding-top:15px;">
+     <v-img         
+                max-width="200px"       
+                max-height="200px"
+                style="border-radius:100%;"
+                :src="currentCriminal[0].imageURL"
+                v-if="dialog"
+           ></v-img>
+    
+      
+    <div >
+    <v-card-title style="color:white" >
+      {{currentCriminal[0].firstname}}  {{currentCriminal[0].lastname}}
+     
+    </v-card-title>
+   
+  
+    </div>
+
+    </div>
+    <v-card-actions>
+    
+
+      <v-spacer></v-spacer>
+
+    
+    </v-card-actions>
+
+ 
+  
+        <v-divider></v-divider>
+
+        <v-card-text style="color:white !important; background-color:#BC263F !important; direction:rtl  ">
+        מספר בטחון סוציאלי:    {{currentCriminal[0].SSN}} 
+            <br/>
+        פלאפון:    {{currentCriminal[0].phoneNumber}} 
+            <br/>
+         כתובת:     {{currentCriminal[0].address}}
+        </v-card-text>
+
+         <v-card-text style="color:white !important; background-color:#7626BC !important; direction:rtl  ">
+         <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" > רישיון נהיגה </h3>
+        התחלה:    {{currentCriminal[0].drivingLicense.start.slice(0,10)}} 
+            <br/>
+        סיום:    {{currentCriminal[0].drivingLicense.end.slice(0,10)}} 
+            <br/>
+         מספר רשיון:     {{currentCriminal[0].drivingLicense.status}}
+        </v-card-text>
+
+          <v-card-text style="color:white !important; background-color:green !important; direction:rtl ">
+         <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" >צווים ודוחות</h3>
+         <div v-for="(report,index) in currentCriminal[0].reports" :key="index">
+        תחילת תוקף:    {{report.startingDate.slice(0,10)}} 
+            <br/>
+        סיום תוקף:    {{report.expiredDate.slice(0,10)}} 
+            <br/>
+            </div>
+     </v-card-text>
+     
+
+  </v-card>
+
+
+    </v-dialog>
+
   <v-card
     class="mx-auto"
     max-height="300"
     outlined
     style="background-color:#E2DFDB; direction:rtl"
+  
   >
     <v-list-item three-line>
       <v-list-item-content>
@@ -54,10 +138,11 @@
       tile
       color="success"
       style="margin-top:2%"
+      text @click="dialog = true, getCriminalDetails(criminal.SSN)"
     > 
       מעבר לפרופיל
       <v-icon dark>
-        mdi-plus
+          mdi-arrow-left
       </v-icon>
     </v-btn>
      
@@ -71,6 +156,11 @@
     
   </v-card>
 
+   
+
+
+  </div>
+
 </template>
 
 <script>
@@ -83,14 +173,14 @@
     data() { return {
    
         criminals:[{'ilay':1}],
-        isSuscpets: true,
-        isReqested:false, }
+        isSuscpets: false,
+        isReqested:true,
+        apiAdress:'http://app-api-f-intelscraping2.apps.openforce.openforce.biz/profile/all/total',
+         dialog: false,
+         currentCriminal:{} }
     },
       created: async function () {  
-          const arr = await this.getsWanted();
-          arr.forEach((item, i) => {
-            this.$set(this.criminals, this.criminals.length + i - 1, item);
-          })  
+         this.criminals = await this.getsWanted();
     },
     methods: {
        async wanteds()   {
@@ -114,6 +204,12 @@
 
            let all= await axios.get(adress+'/intelligence/all/suspectsRequested');
            return all.data.suspects;
+       },
+       async getCriminalDetails(ssn) {
+           let allDataArray= await axios.get(this.apiAdress);
+           this.currentCriminal= allDataArray.data.filter(criminal => 
+               (criminal.SSN === ssn)
+           );
        }
   },
     watch: {
