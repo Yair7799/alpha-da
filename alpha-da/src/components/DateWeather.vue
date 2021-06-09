@@ -1,17 +1,19 @@
 <template>
-  <div id="date-weather">
-    <v-row>
-      <span>{{ this.date.toLocaleDateString("en-GB") }}</span>
-    </v-row>
-    <v-row class="d-flex flex-flex-nowrap">
-      <v-col>
-        <v-img :src="getImgUrl(this.image)" />
-      </v-col>
-      <v-col>
-        <span>{{ this.temperatureCelsius }}</span>
-      </v-col>
-    </v-row>
-  </div>
+  <v-card id="date-weather" class="mx-auto" width="14%" outlined>
+    <v-list-item three-line>
+      <v-list-item-avatar tile size="80">
+        <v-img style="width:100%" :src="getImgUrl(this.image)"/>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <div class="text-overline mb-4">
+          {{ this.date.toLocaleDateString("en-GB") }}
+        </div>
+        <v-list-item-title class="text-h5 mb-1">
+          {{ this.displayTemperatureCelsius }}&deg;C
+        </v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
 <script>
 const weatherImages = {
@@ -19,24 +21,36 @@ const weatherImages = {
   cloud: "cloud",
   sun: "sun",
   windy: "windy",
-  cloudy: "cloudy",
+  cloudyWithSun: "cloudy",
   raining: "raining"
 };
 
 export default {
   name: "DateWeather",
-  data() {
-    return {
-      image: weatherImages.unavailable
-    };
-  },
   props: {
     temperature: Number,
+    humidity: Number,
+    pressure: Number,
     date: Date
   },
   computed: {
-    temperatureCelsius() {
-      return ((this.temperature - 32) * 5) / 9;
+    displayTemperatureCelsius() {
+      return (((this.temperature - 32) * 5) / 9).toFixed(0);
+    },
+    image() {
+      return [this.pressure, this.humidity, this.temperature].some(
+        el => typeof el === undefined
+      )
+        ? weatherImages.unavailable
+        : this.humidity > 90
+        ? weatherImages.raining
+        : this.displayTemperatureCelsius > 24
+        ? weatherImages.sun
+        : this.pressure < 1000
+        ? weatherImages.windy
+        : this.humidity > 40
+        ? weatherImages.cloud
+        : weatherImages.cloudyWithSun;
     }
   },
   methods: {
@@ -49,7 +63,6 @@ export default {
 </script>
 <style scoped>
 #date-weather {
-  background-color: lightgray;
-  width: 14%;
+  margin: 2px;
 }
 </style>
