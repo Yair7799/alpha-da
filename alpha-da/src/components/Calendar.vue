@@ -1,17 +1,18 @@
 <template>
   <v-row>
-    <div>
+    <div class="mr-1">
       <v-card dir="rtl" class="width fullHeight">
         <v-card-title>
           אירועים ומועדים
         </v-card-title>
-        <v-card-actions>
+        <v-card-actions class="d-flex justify-center">
           <v-list>
             <v-list-item
               v-for="event in this.currMonthEvents"
               :key="event.name"
+              class="d-flex justify-center"
             >
-              {{ "• " + event.date + ":  " + event.name }}</v-list-item
+              {{ event.date + " • " + event.name }}</v-list-item
             >
           </v-list>
         </v-card-actions>
@@ -22,6 +23,8 @@
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
+        no-title
+        readonly
       ></v-date-picker>
     </div>
   </v-row>
@@ -66,13 +69,17 @@ export default {
       });
     },
     currMonthEvents: function() {
+      const noEventsArray = [{ name: "אין אירועים החודש", date: "" }];
       let currMonthYear = "";
       if (this.wasMounted) {
         currMonthYear = this.$refs.datePicker.tableDate;
       } else {
         currMonthYear = this.currMonthYear;
       }
-      return this.events.filter(event => event.date.includes(currMonthYear));
+      const currMonthEvents = this.events.filter(event =>
+        event.date.includes(currMonthYear)
+      );
+      return currMonthEvents.length ? currMonthEvents : noEventsArray;
     }
   }
 };
@@ -84,7 +91,7 @@ export default {
 }
 
 .v-list {
-  background-color: #c4c4c4;
+  background-color: #a3a3a3;
 }
 
 .width {
