@@ -6,7 +6,17 @@
         v-model="mapDialog"
         transition="dialog-bottom-transition"
         max-width="600"
-      ></v-dialog>
+        height-max="600"
+      >
+        <div class="container">
+          <iframe
+            :src="`http://alpha-maps-git-tmzmap2.apps.openforce.openforce.biz/`"
+            width="100%"
+            height="100%"
+            frameborder="0" >
+           </iframe>
+        </div>
+      </v-dialog>
       <v-btn class="mx-2" @click="mapDialog = true" fab dark small color="primary">
         <v-icon dark> mdi-map </v-icon>
       </v-btn>
@@ -125,6 +135,7 @@ export default {
 .select {
   max-width: 35%;
 }
+
 
 .v-card,
 .v-application {
