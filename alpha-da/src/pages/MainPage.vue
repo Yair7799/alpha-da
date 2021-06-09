@@ -19,6 +19,7 @@
         <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
       </v-col>
     </v-row>
+    <weather-table></weather-table>
   </v-container>
 </template>
 
@@ -29,7 +30,7 @@ import securityCard from "../components/SecurityCard.vue";
 import graphes from "../components/GraphesCard.vue";
 import router from "../router";
 import userService from "../userService";
-
+import weatherTable from "../components/WeatherTable";
 
 export default {
   name: "MainPage",
@@ -37,7 +38,8 @@ export default {
     intelj: intelj,
     calendar: Calendar,
     security: securityCard,
-    graphes: graphes
+    graphes: graphes,
+    "weather-table": weatherTable
   },
   data: () => ({}),
   methods: {
@@ -49,6 +51,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
