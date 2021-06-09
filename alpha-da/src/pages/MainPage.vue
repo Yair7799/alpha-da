@@ -1,25 +1,27 @@
 <template>
-  <v-container class=" lighten-5">
-    <v-row class="mb-6" no-gutters>
-      <v-col sm="5" md="6">
+  <v-container class="lighten-5" align-content="strech">
+    <v-row class="mb-6 row1" justify="center" >
+      <v-col cols="5">
         <intelj> </intelj>
       </v-col>
-      <v-col sm="5" offset-sm="2" md="6" offset-md="0">
+      <v-col cols="5" class="" align-content="strech">
         <security></security>
       </v-col>
     </v-row>
-    <v-row no-gutters>
-      <v-col sm="6" md="6" lg="6" class="halfWidth">
+    <v-row class="mb-6 row1" justify="center">
+      <v-col cols="5" align-content="strech">
         <graphes />
       </v-col>
-      <v-col sm="6" md="6" offset-md="2" lg="6" offset-lg="0">
-        <calendar></calendar>
-      </v-col>
-      <v-col>
-        <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
+      <v-col  cols="5" class="ml-10" align-content="strech">
+        <calendar class="mt-3"></calendar>
       </v-col>
     </v-row>
-    <weather-table></weather-table>
+    <div style="justify-content: center;" class="mt-16">
+        <weather-table class="size" ></weather-table>
+</div>
+    
+        <v-btn @click="logout()" rounded color="primary" dark>התנתק</v-btn>
+
   </v-container>
 </template>
 
@@ -51,4 +53,22 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.maxHeight {
+  height:15% !important;
+}
+
+.row1 {
+  height: 300px;
+}
+
+.size {
+  width: 70wh;
+  justify-content: center;
+}
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+
+</style>

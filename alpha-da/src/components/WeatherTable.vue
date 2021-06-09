@@ -1,6 +1,7 @@
 <template>
   <v-row>
     <date-weather
+    class="ml-5"
       v-for="(temp, index) in temps"
       :key="index"
       :temperature="temp.temp"
@@ -29,13 +30,13 @@ export default {
         { temp: 2, pressure: 1012, humidity: 95 },
         { temp: 2, pressure: 1000, humidity: 40 },
         { temp: 80, pressure: 1012, humidity: 30 },
-        { temp: 270, pressure: 1012, humidity: 95 },
-        { temp: 270, pressure: 1000, humidity: 40 },
-        { temp: 80, pressure: 1012, humidity: 30 },
-        { temp: 270, pressure: 1012, humidity: 95 },
-        { temp: 270, pressure: 1000, humidity: 40 },
-        { temp: 80, pressure: 1012, humidity: 30 },
-        { temp: 270, pressure: 1000, humidity: 40 }
+        // { temp: 270, pressure: 1012, humidity: 95 },
+        // { temp: 270, pressure: 1000, humidity: 40 },
+        // { temp: 80, pressure: 1012, humidity: 30 },
+        // { temp: 270, pressure: 1012, humidity: 95 },
+        // { temp: 270, pressure: 1000, humidity: 40 },
+        // { temp: 80, pressure: 1012, humidity: 30 },
+        // { temp: 270, pressure: 1000, humidity: 40 }
       ]
     };
   },

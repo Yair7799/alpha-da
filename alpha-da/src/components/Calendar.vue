@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-row>
     <div>
       <v-card dir="rtl" class="width fullHeight">
@@ -20,7 +21,9 @@
         :events="eventsToDisplay"
       ></v-date-picker>
     </div>
+    
   </v-row>
+  </div>
 </template>
 <script>
 import datesData from '../db/dates.json';
@@ -78,7 +81,7 @@ import datesData from '../db/dates.json';
 }
 
 .width {
-  width: 450px;
-  height: 100%
+  width: 420px;
+  height: 328px;
 }
 </style>
