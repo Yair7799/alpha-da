@@ -10,38 +10,69 @@
         <v-toolbar color="primary" dark>פרטים נוספים</v-toolbar>
         <v-card-text>
           <div class="pa-4">
-          <v-list dir="ltr">
-            <v-list-item class="bigFont" v-for="(value, name, index) in this.event" :key="index">{{ name }}  :  {{ value }}</v-list-item>
-            </v-list></div>
+            <v-list dir="ltr">
+              <v-list-item
+                class="bigFont d-flex justify-end"
+                v-for="(value, name, index) in this.eventData"
+                :key="index"
+                >{{ name }} : {{ value }}</v-list-item
+              >
+            </v-list>
+          </div>
         </v-card-text>
         <v-card-actions class="justify-center whiteBackground">
           <v-btn outlined text @click="dialog = false">סגירה</v-btn>
         </v-card-actions>
       </v-card>
-      </v-dialog>
+    </v-dialog>
   </v-card>
 </template>
 
 <script>
+import eventDictionary from "../assets/eventDictionary.json";
+
 export default {
   name: "EventDetailsCard",
   data: () => ({
-    dialog: false,
+    dialog: false
   }),
   props: {
     event: {
       type: Object
     }
   },
+  computed: {
+    eventData() {
+      const basicReport = {
+        תז: this.event.id,
+        תאריך: new Date(this.event.date).toLocaleDateString("en-GB"),
+        "דווח על ידי": this.event.reported_by,
+        'נ"צ': `(${this.event.lat},${this.event.lon})`
+      };
+
+      const extra = Object.fromEntries(
+        Object.entries(eventDictionary[this.event.type]).map(([key, value]) =>
+          key != "report_date"
+            ? [value, this.event[key]]
+            : [
+                eventDictionary[this.event.type].report_date,
+                new Date(this.event.report_date).toLocaleDateString("en-GB")
+              ]
+        )
+      );
+
+      return { ...basicReport, ...extra };
+    }
+  },
   methods: {
     activateDialog() {
       this.dialog = true;
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style >
+<style>
 .v-card {
   width: 100%;
   background-color: #a3a3a3 !important;
