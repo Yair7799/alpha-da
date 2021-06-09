@@ -1,5 +1,5 @@
 <template>
-  <v-card style="direction: rtl;" class="mx-auto mainCard" outlined color="info">
+  <v-card style="direction: rtl;" class="mx-auto mainCard" outlined >
     <v-list-item three-line class="d-flex mx-auto">
       <v-list-item-title class="">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
       <v-dialog
