@@ -1,7 +1,7 @@
 <template>
   <v-card style="direction: rtl" class="mx-auto mainCard" outlined color="info">
     <v-list-item three-line class="d-flex mx-auto">
-      <v-list-item-title class="mb-1"> ציר אבטחתי </v-list-item-title>
+      <v-list-item-title class="mb-1">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
       <v-dialog
         v-model="mapDialog"
         transition="dialog-bottom-transition"
@@ -55,11 +55,10 @@
     </v-list-item>
 
     <v-card-actions>
-      <v-container>
+      <v-container class="mb-2 scroll">
         <event-details-card
-          class="mb-2"
-          v-for="event in eventsToDisplay"
-          :key="event.date"
+          v-for="(event, index) in eventsToDisplay"
+          :key="index"
           :details="event.type"
           :time="event.date.substr(11, 5)"
         ></event-details-card>
@@ -121,11 +120,12 @@ export default {
     },
   },
   methods: {},
-  // mounted() {
-  //   fetch(
-  //     "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
-  //   ).then((response) => (this.allEvents = response.json));
-  // },
+  mounted() {
+    fetch(
+      "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
+    ).then((response) => (response.json()))
+    .then((data) => this.allEvents = data.flat(1));
+  },
 };
 </script>
 
@@ -135,6 +135,7 @@ export default {
 .select {
   max-width: 35%;
 }
+
 
 .v-card,
 .v-application {
@@ -146,5 +147,10 @@ export default {
 }
 .v-list {
   direction: rtl !important;
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: 200px;
 }
 </style>

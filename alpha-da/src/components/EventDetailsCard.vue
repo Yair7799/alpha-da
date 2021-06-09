@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined class="text-h6" @click="activateDialog">
+  <v-card outlined class="text-h6 mt-2" @click="activateDialog">
     {{ " • " + time + ":    " + details }}
     <v-dialog
       v-model="dialog"
