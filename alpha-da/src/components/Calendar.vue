@@ -4,7 +4,8 @@
     <div class="mr-1">
       <v-card dir="rtl" class="width fullHeight">
         <v-card-title class="font">
-          אירועים ומועדים
+        <h4>          אירועים ומועדים
+</h4>
         </v-card-title>
         <v-card-actions>
           <v-list rounded >
@@ -26,10 +27,6 @@
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
-<<<<<<< HEAD
-=======
-        
->>>>>>> ebb2c6835c4aa3f56910e00c049f842b68600c02
         readonly
       ></v-date-picker>
     </div>
