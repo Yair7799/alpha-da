@@ -84,8 +84,7 @@
 
   <v-card
     class="mx-auto"
-    max-width="500"
-    height="300"
+    max-height="300"
     outlined
     style="background-color:#E2DFDB; direction:rtl"
   
@@ -228,7 +227,7 @@
 
 .scroll {
   overflow-y: scroll;
-  height: 60%;
+  height: 200px;
   width:95%;
 
   

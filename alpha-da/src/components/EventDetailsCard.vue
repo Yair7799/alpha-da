@@ -1,6 +1,6 @@
 <template>
   <v-card outlined class="text-h6 mt-2" @click="activateDialog">
-    {{ " • " + time + ":    " + details }}
+    {{ " • " + this.event.date.substr(11, 5) + ":    " + this.event.type }}
     <v-dialog
       v-model="dialog"
       transition="dialog-bottom-transition"
@@ -9,7 +9,10 @@
       <v-card style="direction: rtl">
         <v-toolbar color="primary" dark>פרטים נוספים</v-toolbar>
         <v-card-text>
-          <div class="text-h2 pa-4">פרטים נוספים</div>
+          <div class="pa-4">
+          <v-list dir="ltr">
+            <v-list-item class="bigFont" v-for="(value, name, index) in this.event" :key="index">{{ name }}  :  {{ value }}</v-list-item>
+            </v-list></div>
         </v-card-text>
         <v-card-actions class="justify-center whiteBackground">
           <v-btn outlined text @click="dialog = false">סגירה</v-btn>
@@ -26,12 +29,9 @@ export default {
     dialog: false,
   }),
   props: {
-    time: {
-      type: String,
-    },
-    details: {
-      type: String,
-    },
+    event: {
+      type: Object
+    }
   },
   methods: {
     activateDialog() {
@@ -50,5 +50,9 @@ export default {
 .v-card__text,
 .whiteBackground {
   background-color: white !important;
+}
+
+.bigFont {
+  font-size: 1.2rem;
 }
 </style>
