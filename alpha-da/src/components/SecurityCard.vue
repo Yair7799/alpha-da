@@ -1,18 +1,18 @@
 <template>
-  <v-card style="direction: rtl" class="mx-auto mainCard" outlined color="info">
+  <v-card style="direction: rtl;" class="mx-auto mainCard" outlined color="info">
     <v-list-item three-line class="d-flex mx-auto">
-      <v-list-item-title class="mb-1">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
+      <v-list-item-title class="">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
       <v-dialog
         v-model="mapDialog"
         transition="dialog-bottom-transition"
-        max-width="600"
-        height-max="600"
+        width="1550px"
+        height="700px"
       >
         <div class="container">
           <iframe
             :src="`http://alpha-maps-git-tmzmap2.apps.openforce.openforce.biz/`"
-            width="100%"
-            height="100%"
+            width="1500x"
+            height="500px"
             frameborder="0" >
            </iframe>
         </div>
@@ -55,7 +55,7 @@
     </v-list-item>
 
     <v-card-actions>
-      <v-container class="mb-2 scroll">
+      <v-container class="scroll">
         <event-details-card
           v-for="(event, index) in eventsToDisplay"
           :key="index"
@@ -150,6 +150,6 @@ export default {
 
 .scroll {
   overflow-y: scroll;
-  height: 200px;
+  height: 141px;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <v-row>
     <date-weather
+    class="ml-5"
       v-for="(temp, index) in temps"
       :key="index"
       :temperature="temp.temp"
@@ -23,6 +24,7 @@ export default {
     return {
       temperature: 270,
       date: new Date(),
+
       temps: []
     };
   },
