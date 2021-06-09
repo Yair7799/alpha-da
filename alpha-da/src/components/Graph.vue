@@ -22,11 +22,7 @@ export default {
       series: [
         {
           name: "אירועים חריגים",
-          data: [1,50]
-        },
-        {
-          name: "צפי אירועים חריגים",
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0,0,0,0,0,0,0],
         },
       ],
       chartOptions: {
@@ -53,13 +49,13 @@ export default {
           curve: "smooth",
         },
         title: {
-          text: "Average High & Low Temperature",
-          align: "left",
+          text: "גרף אירועים חריגים",
+          align: "center",
         },
         grid: {
-          borderColor: "#e7e7e7",
+          borderColor: "white",
           row: {
-            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            colors: ["#101a30", "transparent"], // takes an array which will be repeated on columns
             opacity: 0.5,
           },
         },
@@ -67,18 +63,18 @@ export default {
           size: 1,
         },
         xaxis: {
-          min: 0,
-          max: 12,
+          min: 1,
+          max: 7,
           title: {
-            text: "Month",
+            text: "יום",
           },
         },
         yaxis: {
           title: {
-            text: "Temperature",
+            text: "מספר איורעים",
           },
           min: 0,
-          max: 500,
+          max: 20,
         },
         legend: {
           position: "top",
@@ -89,6 +85,76 @@ export default {
         },
       },
     };
+  },
+  async mounted() {
+    // const starFullDate = new Date();
+    // let endFullDate = starFullDate;
+    // if (endFullDate.getDate() < 7) {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear(),
+    //     starFullDate.getMonth() - 1,
+    //     starFullDate.getDate() - 7
+    //   );
+    // } else if (starFullDate.getMonth() == 1) {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear() - 1,
+    //     starFullDate.getMonth() - 1,
+    //     starFullDate.getDate() - 7
+    //   );
+    // } else {
+    //   endFullDate = new Date(
+    //     starFullDate.getFullYear(),
+    //     starFullDate.getMonth(),
+    //     starFullDate.getDate() - 7
+    //   );
+    // }
+    // let startDate = `${starFullDate.getFullYear()}-${
+    //   starFullDate.getMonth() + 1
+    // }-${starFullDate.getDate()}`;
+    // let endDate = `${endFullDate.getFullYear()}-${
+    //   endFullDate.getMonth() + 1
+    // }-${endFullDate.getDate()}`;
+
+    const startDate = "2021-06-01";
+    const endDate = "2021-06-08";
+    const url =
+      "http://tmz-2-backend-git-tmzapp2.apps.openforce.openforce.biz/security/dateEvents";
+    let weekEventsMatrix = [];
+    await fetch(`${url}/${startDate}/${endDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        weekEventsMatrix = data;
+      });
+
+    let weekEventsArray = [];
+
+    for (let index = 0; index < weekEventsMatrix.length; index++) {
+      for (let innerI = 0; innerI < weekEventsMatrix[index].length; innerI++) {
+        weekEventsArray.push(weekEventsMatrix[index][innerI]);
+      }
+    }
+
+    let count = 0;
+    this.series[0].data = [];
+    let weekDates = [
+      "2021-06-01",
+      "2021-06-02",
+      "2021-06-03",
+      "2021-06-04",
+      "2021-06-05",
+      "2021-06-06",
+      "2021-06-07",
+    ];
+
+    weekDates.forEach((day) => {
+      weekEventsArray.forEach((event) => {
+        if (day == event.date.slice(0, 10)) {
+          count++;
+        }
+      });
+      this.series[0].data.push(count);
+      count = 0;
+    });
   },
 };
 </script>

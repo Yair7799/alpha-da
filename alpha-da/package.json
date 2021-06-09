@@ -2,8 +2,10 @@
   "name": "alpha-da",
   "version": "0.1.0",
   "private": true,
+  "main": "src/main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start" : "run serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
