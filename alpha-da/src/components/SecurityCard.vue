@@ -50,6 +50,7 @@
         :items="locations"
         label="אזור מוצג"
         solo
+        reverse
         hide-details
       ></v-select>
     </v-list-item>
@@ -84,32 +85,7 @@ export default {
       "קווינס",
       "סטטן איילנד",
     ],
-    allEvents: [
-      {
-        type: "חטיפה",
-        date: "2021-06-06T00:00:00.000Z",
-        lon: 31.111111,
-        lat: 34.1111111,
-      },
-      {
-        type: "תאונה",
-        date: "2021-06-07T08:36:47.793Z",
-        lon: 31.11111111,
-        lat: 34.11111111,
-      },
-      {
-        type: "ירי",
-        date: "2021-06-08T08:38:48.925Z",
-        lon: 31.12345,
-        lat: 45.12345,
-      },
-      {
-        type: "דקירה",
-        date: "2021-06-08T08:42:41.059Z",
-        lon: 21.4456,
-        lat: 27.2236,
-      },
-    ],
+    allEvents: [],
   }),
   computed: {
     eventsToDisplay() {
