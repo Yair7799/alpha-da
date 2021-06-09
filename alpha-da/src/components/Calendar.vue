@@ -1,17 +1,17 @@
 <template>
-<div>
+<div class="ml-3">
   <v-row>
     <div class="mr-1">
       <v-card dir="rtl" class="width fullHeight">
-        <v-card-title>
+        <v-card-title class="font">
           אירועים ומועדים
         </v-card-title>
-        <v-card-actions class="d-flex justify-center">
-          <v-list>
+        <v-card-actions>
+          <v-list rounded >
             <v-list-item
               v-for="event in this.currMonthEvents"
               :key="event.name"
-              class="d-flex justify-center"
+              class="d-flex "
             >
               {{ event.date + " • " + event.name }}</v-list-item
             >
@@ -21,10 +21,11 @@
     </div>
     <div>
       <v-date-picker
+      no-title
+      class="tall"
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
-        no-title
         readonly
       ></v-date-picker>
     </div>
@@ -97,8 +98,20 @@ export default {
   background-color: #a3a3a3;
 }
 
+.font {
+  font-size: 2rem;
+}
+
 .width {
-  width: 420px;
+  width: 430px;
   height: 328px;
+}
+
+.tall {
+  height: 312px
+}
+
+.fullHeight {
+  height: 312px;
 }
 </style>

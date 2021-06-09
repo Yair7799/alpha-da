@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined class="text-h6 mt-2" @click="activateDialog">
+  <v-card outlined color="info" class="text-h6 mt-2" @click="activateDialog">
     {{ " • " + this.event.date.substr(11, 5) + ":    " + this.event.type }}
     <v-dialog
       v-model="dialog"
