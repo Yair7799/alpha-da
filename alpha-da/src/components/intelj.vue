@@ -4,27 +4,81 @@
    <v-dialog
       v-model="dialog"
       transition="dialog-bottom-transition"
-      max-width="600"
+      max-width="350"
+      
+     
     >
 
-      <v-card style="direction: rtl">
-        <v-toolbar color="primary" dark>פרטים נוספים</v-toolbar>
-        <v-card-text>
-          <v-img 
-                style="border-radius:100%; margin-right:20px; margin-top:1%; margin-bottom:1%;"
-                 max-height="60"
-                 max-width="60"
+    <v-card
+     v-if="dialog"
+     
+    
+    style="background-color:#070129 !important;  "
+    max-width="400"  
+  >
+  <div style="display: flex !important; 
+  align-items: center !important; flex-direction: column; padding-top:15px;">
+     <v-img         
+                max-width="200px"       
+                max-height="200px"
+                style="border-radius:100%;"
                 :src="currentCriminal[0].imageURL"
+                v-if="dialog"
            ></v-img>
     
-        <p style="color:white; margin-bottom:0%; font-weight:bold" >{{currentCriminal[0].firstname}} </p>            
-        <p style="color:#E7E7E7; margin-bottom:2%; font-weight:300; font-size:80%">{{currentCriminal[0].SSN}} </p>
+      
+    <div >
+    <v-card-title style="color:white" >
+      {{currentCriminal[0].firstname}}  {{currentCriminal[0].lastname}}
+     
+    </v-card-title>
+   
+  
+    </div>
 
+    </div>
+    <v-card-actions>
+    
+
+      <v-spacer></v-spacer>
+
+    
+    </v-card-actions>
+
+ 
+  
+        <v-divider></v-divider>
+
+        <v-card-text style="color:white !important; background-color:#BC263F !important; direction:rtl  ">
+        מספר בטחון סוציאלי:    {{currentCriminal[0].SSN}} 
+            <br/>
+        פלאפון:    {{currentCriminal[0].phoneNumber}} 
+            <br/>
+         כתובת:     {{currentCriminal[0].address}}
         </v-card-text>
-        <v-card-actions class="justify-center whiteBackground">
-          <v-btn outlined text @click="dialog = false">סגירה</v-btn>
-        </v-card-actions>
-      </v-card>
+
+         <v-card-text style="color:white !important; background-color:#7626BC !important; direction:rtl  ">
+         <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" > רישיון נהיגה </h3>
+        התחלה:    {{currentCriminal[0].drivingLicense.start.slice(0,10)}} 
+            <br/>
+        סיום:    {{currentCriminal[0].drivingLicense.end.slice(0,10)}} 
+            <br/>
+         מספר רשיון:     {{currentCriminal[0].drivingLicense.status}}
+        </v-card-text>
+
+          <v-card-text style="color:white !important; background-color:green !important; direction:rtl ">
+         <h3 style="padding-right:35%;  text-decoration: underline; padding-top:3px" >צווים ודוחות</h3>
+         <div v-for="(report,index) in currentCriminal[0].reports" :key="index">
+        תחילת תוקף:    {{report.startingDate.slice(0,10)}} 
+            <br/>
+        סיום תוקף:    {{report.expiredDate.slice(0,10)}} 
+            <br/>
+            </div>
+     </v-card-text>
+     
+
+  </v-card>
+
 
     </v-dialog>
 
@@ -34,6 +88,7 @@
     height="300"
     outlined
     style="background-color:#E2DFDB; direction:rtl"
+  
   >
     <v-list-item three-line>
       <v-list-item-content>
