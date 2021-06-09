@@ -14,6 +14,8 @@
 </template>
 <script>
 import dateWeather from "./DateWeather";
+import axios from "axios";
+const { adress } = require("../../prodAdress.json");
 
 export default {
   name: "WeatherTable",
@@ -22,23 +24,14 @@ export default {
     return {
       temperature: 270,
       date: new Date(),
-      temps: [
-        { temp: 0, pressure: 1012, humidity: 30 },
-        { temp: 3, pressure: 1012, humidity: 95 },
-        { temp: 2, pressure: 1000, humidity: 40 },
-        { temp: 80, pressure: 1012, humidity: 30 },
-        { temp: 2, pressure: 1012, humidity: 95 },
-        { temp: 2, pressure: 1000, humidity: 40 },
-        { temp: 80, pressure: 1012, humidity: 30 },
-        // { temp: 270, pressure: 1012, humidity: 95 },
-        // { temp: 270, pressure: 1000, humidity: 40 },
-        // { temp: 80, pressure: 1012, humidity: 30 },
-        // { temp: 270, pressure: 1012, humidity: 95 },
-        // { temp: 270, pressure: 1000, humidity: 40 },
-        // { temp: 80, pressure: 1012, humidity: 30 },
-        // { temp: 270, pressure: 1000, humidity: 40 }
-      ]
+
+      temps: []
     };
+  },
+  mounted() {
+    axios
+      .get(adress + "/weatherDates/weather")
+      .then(res => (this.temps = res.data));
   },
   methods: {
     decreaseDays(days) {
