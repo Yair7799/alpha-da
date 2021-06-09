@@ -3,15 +3,16 @@
   <v-row>
     <div class="mr-1">
       <v-card dir="rtl" class="width fullHeight">
-        <v-card-title>
-          אירועים ומועדים
+        <v-card-title class="font">
+        <h4>          אירועים ומועדים
+</h4>
         </v-card-title>
         <v-card-actions>
           <v-list rounded >
             <v-list-item
               v-for="event in this.currMonthEvents"
               :key="event.name"
-              class="d-flex justify-center"
+              class="d-flex "
             >
               {{ event.date + " • " + event.name }}</v-list-item
             >
@@ -26,7 +27,6 @@
         ref="datePicker"
         v-model="currDate"
         :events="eventsToDisplay"
-        
         readonly
       ></v-date-picker>
     </div>
@@ -97,6 +97,10 @@ export default {
 
 .v-list {
   background-color: #a3a3a3;
+}
+
+.font {
+  font-size: 2rem;
 }
 
 .width {

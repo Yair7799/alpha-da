@@ -1,7 +1,7 @@
 <template>
   <v-card style="direction: rtl;" class="mx-auto mainCard" outlined >
     <v-list-item three-line class="d-flex mx-auto">
-      <v-list-item-title class="">{{  "ציר אבטחתי: " + this.dayToDisplay }} </v-list-item-title>
+      <v-list-item-title class=""><h4>{{  "ציר אבטחתי: " + this.dayToDisplay }}</h4> </v-list-item-title>
       <v-dialog
         v-model="mapDialog"
         transition="dialog-bottom-transition"
@@ -10,7 +10,7 @@
       >
         <div class="container">
           <iframe
-            :src="`http://alpha-maps-git-tmzmap2.apps.openforce.openforce.biz/`"
+            :src="`http://alpha-maps-yosef-read-only-tmzmap2.apps.openforce.openforce.biz/.`"
             width="1500x"
             height="500px"
             frameborder="0" >
@@ -50,6 +50,7 @@
         :items="locations"
         label="אזור מוצג"
         solo
+        reverse
         hide-details
       ></v-select>
     </v-list-item>
@@ -84,32 +85,7 @@ export default {
       "קווינס",
       "סטטן איילנד",
     ],
-    allEvents: [
-      {
-        type: "חטיפה",
-        date: "2021-06-06T00:00:00.000Z",
-        lon: 31.111111,
-        lat: 34.1111111,
-      },
-      {
-        type: "תאונה",
-        date: "2021-06-07T08:36:47.793Z",
-        lon: 31.11111111,
-        lat: 34.11111111,
-      },
-      {
-        type: "ירי",
-        date: "2021-06-08T08:38:48.925Z",
-        lon: 31.12345,
-        lat: 45.12345,
-      },
-      {
-        type: "דקירה",
-        date: "2021-06-08T08:42:41.059Z",
-        lon: 21.4456,
-        lat: 27.2236,
-      },
-    ],
+    allEvents: [],
   }),
   computed: {
     eventsToDisplay() {

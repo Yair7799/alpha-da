@@ -1,0 +1,26 @@
+{
+  "חטיפה": {
+    "kidnapper": "חוטף",
+    "kidnapped": "חטוף",
+    "last_location": "מיקום אחרון",
+    "report_date": "תאריך דיווח"
+  },
+  "ירי": {
+    "shooter": "יורה",
+    "weapon_type": "כלי הנשק",
+    "injured_count": "כמות פצועים",
+    "injured_type": "סוג הפציעה"
+  },
+  "דקירה": {
+    "stabber": "דוקר",
+    "weapon_type": "כלי הנשק",
+    "injured_count": "כמות פצועים",
+    "injured_type": "סוג הפציעה"
+  },
+  "תאונה": {
+    "injured": "פצוע",
+    "driver": "נהג",
+    "injured_count": "כמות פצועים",
+    "report_date": "תאריך דיווח"
+  }
+}
