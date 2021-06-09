@@ -66,15 +66,15 @@ export default {
           min: 1,
           max: 7,
           title: {
-            text: "Month",
+            text: "יום",
           },
         },
         yaxis: {
           title: {
-            text: "Temperature",
+            text: "מספר איורעים",
           },
           min: 0,
-          max: 500,
+          max: 20,
         },
         legend: {
           position: "top",
