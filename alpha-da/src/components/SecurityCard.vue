@@ -111,7 +111,7 @@ export default {
       `${mapQuest}?key=${mapQuestKey}&location=${event.lat},${event.lon}&includeRoadMetadata=true&includeNearestIntersection=true`
     ).then(res=>res.data));
 
-    console.log(this.locationsData);
+    this.locations = this.locationsData.map(location=>location.results[0].locations[0].adminArea5);
   }
 };
 </script>
