@@ -59,8 +59,7 @@
         <event-details-card
           v-for="(event, index) in eventsToDisplay"
           :key="index"
-          :details="event.type"
-          :time="event.date.substr(11, 5)"
+          :event="event"
         ></event-details-card>
       </v-container>
     </v-card-actions>
@@ -122,7 +121,7 @@ export default {
   methods: {},
   mounted() {
     fetch(
-      "http://police-server-securityapp2.apps.openforce.openforce.biz/de/events"
+      "http://police-server-securityapp2.apps.openforce.openforce.biz/de/dateEvents/2021-01-01/2022-01-01"
     ).then((response) => (response.json()))
     .then((data) => this.allEvents = data.flat(1));
   },
