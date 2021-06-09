@@ -18,7 +18,7 @@
       </v-card></v-dialog
     >
 
-    <v-btn @click="dialog = !dialog"> צפי אירועים </v-btn>
+    <v-btn @click="dialog = !dialog">הגדר רף</v-btn>
   </div>
 </template>
 
