@@ -10,7 +10,7 @@
       >
         <div class="container">
           <iframe
-            :src="`http://alpha-maps-git-tmzmap2.apps.openforce.openforce.biz/`"
+            :src="`http://alpha-maps-yosef-read-only-tmzmap2.apps.openforce.openforce.biz/.`"
             width="1500x"
             height="500px"
             frameborder="0" >
