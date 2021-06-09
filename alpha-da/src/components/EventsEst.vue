@@ -18,7 +18,7 @@
       </v-card></v-dialog
     >
 
-    <v-btn @click="dialog = !dialog" style="float:right; border-radius:20px; margin-right:20px; background-color:green; color:white">הגדר רף</v-btn>
+    <v-btn @click="dialog = !dialog" style="float:right; border-radius:20px; margin-right:20px; background-color:purple; color:white">הגדר רף</v-btn>
   </div>
 </template>
 
