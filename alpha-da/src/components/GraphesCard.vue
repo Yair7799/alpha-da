@@ -4,7 +4,7 @@
     <graph v-show="!this.isGraph" />
     <v-row md="6">
       <v-col class="changebtn">
-        <v-btn @click="changeIsGraph">גרף מבוקשים חשודים</v-btn>
+        <v-btn color="secondary" @click="changeIsGraph" style="border-radius:20px; background-color:; color:white  ">שנה גרף</v-btn>
       </v-col>
       <v-col class="eventbtn">
         <eventsest />
