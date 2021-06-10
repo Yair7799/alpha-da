@@ -1,12 +1,14 @@
 <template>
   <div id="chart">
     <apexchart
+    id='card'
       type="line"
       height="235px"
       :options="chartOptions"
       :series="series"
       width="100%"
     ></apexchart>
+   
   </div>
 </template>
 
@@ -20,36 +22,56 @@ export default {
   created: function () {
      this.$bus.on('changedGraph', (data) =>{
        let number =parseInt(data.value);
+         var tag = document.createElement("p");
+             var text = document.createTextNode(" .");
+             text.style="color:white;"
+            tag.appendChild(text);
+       var element = document.getElementById("card");
+         element.appendChild(tag);
         switch(data.picker){
         case "2021-06-04":
-          this.series[1].data[0]=number;
+         this.series[1].data[0]=number;
+        
+ 
+               
             break;
         case "2021-06-05":
           this.series[1].data[1]=number;
+                
             break;
         case "2021-06-06":
           this.series[1].data[2]=number;
+                 
             break;
         case "2021-06-07":
           this.series[1].data[3]=number;
+                 
             break;
         case "2021-06-08":
           this.series[1].data[4]=number;
+                 
             break;
         case "2021-06-09":
           this.series[1].data[5]=number;
+                
             break;
         case "2021-06-10":
           this.series[1].data[6]=number;
+                   
             break;
            
         }
         } );
+
+     
+                     
+        
   
   },
+  
   data: function () {
     return {
-
+     
       refresh:true,
       series: [
         {
@@ -151,7 +173,7 @@ export default {
     // let endDate = `${endFullDate.getFullYear()}-${
     //   endFullDate.getMonth() + 1
     // }-${endFullDate.getDate()}`;
-
+  
     const startDate = "2021-06-01";
     const endDate = "2021-06-08";
     const url =
