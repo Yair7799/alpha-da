@@ -44,7 +44,6 @@ export default {
   computed: {
     eventData() {
       const basicReport = {
-        תז: this.event.id,
         תאריך: new Date(this.event.date).toLocaleDateString("en-GB"),
         "דווח על ידי": this.event.reported_by,
         'נ"צ': `(${this.event.lat},${this.event.lon})`
